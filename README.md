@@ -1,8 +1,9 @@
-Hello World
-
-Das ist neu
+### **Projektidee**
 
 
-**Hallo**
-
-*Hallo*
+- Ausgangslage
+- Funktion/Projektidee
+- Workflow
+    - Dateneingabe
+    - Datenverarbeitung/Speicherung
+    - Datenausgabe
