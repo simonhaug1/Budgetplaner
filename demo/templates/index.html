@@ -8,5 +8,11 @@
     <body>
         <h1>Hallo {{ name }}!</h1>
         <a href="{{ url_for('test')}}">Test</a>
+
+    <form method="POST">
+        <input type="text" name="vorname" placeholder="Bitte geben Sie Ihren Namen ein">
+        <button type="submit">Senden</button>
+    </form>
+
     </body>
 </html>
