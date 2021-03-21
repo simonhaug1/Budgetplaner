@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <!--<title>Hello</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">-->
+    </head>
+    <body>
+
+        <form method="POST">
+            <input type="text" name="budget_name" placeholder="Bitte geben Sie den Namen des Budget ein">
+            <input type="number" name="budget_number" placeholder="Bitte geben Sie Ihr Budget ein" min="0">
+            <button type="submit">Speichern</button>
+        </form>
+        <div class="budget_auflistung">
+           <p>Budgetauflistung</p>
+
+        </div>
+
+    </body>
+</html>

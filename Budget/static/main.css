@@ -1,0 +1,72 @@
+body * {
+  color: black;
+  font-family: arial;
+}
+
+li {
+    font-size: 12px;
+    font-style: italic;
+}
+
+h1 {
+    font-size: 15px;
+    color: blue;
+    }
+/****************************************************************
+***************************************************************/
+/*Allgemeines Design*/
+
+body {
+    padding: 5vw 0;
+    max-width: 90vw;
+    margin: auto!important;
+    }
+
+
+footer {
+position: fixed;
+bottom: 0;
+display: flex;
+justify-content: space-around;
+}
+
+
+
+
+
+/****************************************************************
+***************************************************************/
+/*Startseite*/
+.wrapper {
+display: grid;
+grid-row-gap: 50px;
+grid-column-gap: 50px;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: 1fr 1fr 1fr 1fr;
+height: 80vh;
+}
+
+#titel {
+grid-area: 1 / 1 / 2 / 3;
+}
+
+#budget {
+grid-area: 2 / 1 / 5 / 2;
+}
+
+#verlauf {
+grid-area: 2 / 2 / 3 / 3;
+}
+
+#kreisdiagramm {
+grid-area: 3 / 2 / 4 / 3;
+}
+
+#blank {
+grid-area: 4 / 2 / 5 / 3;
+}
+
+.wrapper div{
+background-color: grey;
+}
+

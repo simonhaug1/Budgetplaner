@@ -2,9 +2,12 @@
 <html lang="de">
     <head>
         <meta charset="utf-8">
-        <title>Meine erste App</title>
+        <title>Hello</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
     </head>
     <body>
         <h1>Hallo {{ name }}!</h1>
+        {{ Grafik | safe  }}
+
     </body>
 </html>
