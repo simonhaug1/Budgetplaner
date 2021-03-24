@@ -1,4 +1,4 @@
-### **Projektidee**
+### **Projektidee Finanzapp**
 
 
 - Ausgangslage
