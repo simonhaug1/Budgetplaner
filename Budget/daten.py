@@ -20,6 +20,12 @@ def budget_speichern(budget_name, budget_number):
     speichern(datei_name, budget_name, budget_number)
     return budget_name, budget_number
 
+
+def ausgabe_speichern(ausgabe_name, ausgabe_number):
+    datei_name = "ausgabe.json"
+    speichern(datei_name, ausgabe_name, ausgabe_number)
+    return ausgabe_name, ausgabe_number
+
 """def budget_number_speichern(budget_number):
     datei_name = "budget.json"
     element_name = "number"

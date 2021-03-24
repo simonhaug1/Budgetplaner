@@ -13,6 +13,17 @@ def index():
     return render_template("index.html")
 
 
+@app.route("/add-ausgabe/", methods=['GET', 'POST'])
+def ausgabe_hinzufügen():
+    if request.method == 'POST':
+        ausgabe_name = request.form['ausgabe_name']
+        ausgabe_number = request.form['ausgabe_number']
+        ausgabe = daten.ausgabe_speichern(ausgabe_name, ausgabe_number)
+        return redirect('/')
+
+
+    return render_template("add_ausgabe.html")
+
 @app.route("/add-budget/", methods=['GET', 'POST'])
 def budget_hinzufügen():
     if request.method == 'POST':

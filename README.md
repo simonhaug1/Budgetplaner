@@ -1,9 +1,7 @@
 ### **Projektidee Finanzapp**
 
 
-- Ausgangslage
-- Funktion/Projektidee
-- Workflow
-    - Dateneingabe
-    - Datenverarbeitung/Speicherung
-    - Datenausgabe
+**Inhalt**
+- "Startseite" Übersicht über Ausgaben
+- Budget (Eingabe des Budget, Ändern und löschen)
+- Eingabe der Ausgaben
