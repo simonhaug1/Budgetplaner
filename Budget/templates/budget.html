@@ -1,12 +1,22 @@
-<!DOCTYPE html>
-<html lang="de">
-    <head>
-        <meta charset="utf-8">
-        <!--<title>Hello</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">-->
-    </head>
-    <body>
+{% extends "layout.html" %}
+{% block content %}
+<body class="budget">
+<h1>Budgetübersicht</h1>
+          <table class="table">
+              <tbody>
 
 
-    </body>
-</html>
+    {% for key, value in budget_dict.items() %}
+
+    <tr>
+       <th> {{ key }} </th>
+       <td> {{ value }} </td>
+    </tr>
+
+    {% endfor %}
+              </tbody>
+ </table>
+<a href="/add-budget/">Budget hinzufügen</a>
+
+           </body>
+{% endblock %}

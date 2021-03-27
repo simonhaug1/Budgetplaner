@@ -14,6 +14,16 @@ def speichern(datei, key, value):
     with open(datei, "w") as open_file:
         json.dump(datei_inhalt, open_file)
 
+def umwandlung_json(datei):
+    with open(datei) as open_file:
+        json_als_dict = open_file.read()
+        mein_eingelesenes_dict = loads(json_als_dict)
+
+def umwandlung_budget():
+    with open("budget.json") as open_file:
+        json_als_dict = open_file.read()
+        budget_dict = json.loads(json_als_dict)
+        return budget_dict
 
 def budget_speichern(budget_name, budget_number):
     datei_name = "budget.json"
