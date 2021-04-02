@@ -22,7 +22,7 @@ def ausgabe_hinzufügen():
         return redirect('/')
 
 
-    return render_template("add_ausgabe.html")
+    return render_template("add_ausgabe.html", budget_dict=daten.umwandlung_budget())
 
 @app.route("/add-budget/", methods=['GET', 'POST'])
 def budget_hinzufügen():
@@ -39,16 +39,7 @@ def budget_hinzufügen():
 
 @app.route("/budget/")
 def auflisten():
-    """    budget = daten.budget_laden()
 
-        budget_liste = "<h1>Budgetkategorien</h1><br><ul class='budgetliste'>"
-        for key, value in budget.items():
-            zeile = "<li><span class='bezeichnung'>" + key + ":</span><span class='betrag'> " + value + "</span></li>"
-            budget_liste += zeile
-        budget_liste += "</ul><a href='/add-budget/' class='add'>Neues Element hinzufügen</a>"""
-
-
-    #return render_template("budget.html")
     return render_template("budget.html", budget_dict=daten.umwandlung_budget())
 
 
