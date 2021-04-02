@@ -48,11 +48,12 @@ Im File `ausgaben.json` wird der Zahlenwert der Ausgabe inkl. der zugehörigen B
 Wenn man nach der Installation das erste mal auf die Seite geht, sind noch keine Daten vorhanden.
 Man kan entweder eine Ausgabe hinzufügen (ohne Budget) oder  zuerst seine Budget-Kategorien hinzufügen.
 Dazu wählt man im Menü `Budget hinzufügen` aus.
-![Budget](doku/budget.png)
+![Budget](.doku/budget.png)
 
 ### Ausgabe hinzufügen
 Im Menü wählt man `Ausgabe hinzufügen` aus um eine neue Ausgabe zu erfassen.
 ![ausgabe](doku/ausgabe.png)
 ### Übersicht über die Ausgaben verschaffen
 Im Menü kann man sich einen Überblick über alle in diesem Monat getätigten Ausgaben machen. 
-![dashboard](doku/dashboard.png)
+![dashboard](doku/dashboard.PNG)
+![test](doku/test.png)
