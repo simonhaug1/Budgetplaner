@@ -8,11 +8,17 @@
             <div class="btn-group btn-group-vertical" role="group" aria-label="Basic radio toggle button group">
                 {% for key, value in budget_dict.items() %}
 
-                    <input type="radio" class="btn-check" name="kategorie" id="{{ key }}" autocomplete="off">
+                    <input type="radio" class="btn-check" value="{{ key }}" name="kategorie" id="{{ key }}" autocomplete="off">
                     <label class="btn btn-outline-primary" for="{{ key }}">{{ key }}</label>
 
                 {% endfor %}
             </div>
+            <div class="form-group row">
+  <label for="example-date-input" class="col-2 col-form-label">Date</label>
+  <div class="col-10">
+    <input class="form-control" name="ausgabe_date" type="date" value="" id="example-date-input">
+  </div>
+</div>
             <button type="submit">Speichern</button>
         </form>
 </body>

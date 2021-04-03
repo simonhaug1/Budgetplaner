@@ -10,7 +10,8 @@ app = Flask("templates")
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+
+    return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen())
 
 
 @app.route("/add-ausgabe/", methods=['GET', 'POST'])
@@ -18,7 +19,9 @@ def ausgabe_hinzufügen():
     if request.method == 'POST':
         ausgabe_name = request.form['ausgabe_name']
         ausgabe_number = request.form['ausgabe_number']
-        ausgabe = daten.ausgabe_speichern(ausgabe_name, ausgabe_number)
+        ausgabe_kategorie = request.form['kategorie']
+        ausgabe_date = request.form['ausgabe_date']
+        ausgabe = daten.ausgabe_speichern(ausgabe_name, ausgabe_number, ausgabe_kategorie, ausgabe_date)
         return redirect('/')
 
 
