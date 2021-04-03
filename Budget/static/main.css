@@ -121,6 +121,19 @@ background-color: #E3D5C8;
     box-shadow: 0 0 0 0.25rem rgb(250 160 28 / 50%);
 }
 
+.kategorien_buttons {
+    flex-wrap: wrap;
+}
+
+.add_ausgabe form > *,  .kategorien_buttons * {
+    margin: 10px 20px 10px 0px;
+}
+
+.ausgabe_speichern {margin-top: 50px!important;}
+
+.add_ausgabe input {width: 100%;}
+
+
 /****************************************************************
 ***************************************************************/
 /*budget*/
