@@ -63,7 +63,18 @@ def ausgaben_zusammenzaehlen():
             summe = sum(count)
         return summe
 
+def budget_zusammenzaehlen():
+    with open('budget.json') as open_file:
+        json_als_string = open_file.read()
+        mein_dict = json.loads(json_als_string)
 
+        count = []
+        for i, j in mein_dict.items():
+            count.append(j)
+            count = list(map(float, count))
+
+            summe_b = sum(count)
+        return summe_b
 
 
 
