@@ -3,7 +3,23 @@
 <body class="index">
         <div class="wrapper">
             <div id="titel"><h2>CHF {{ summe }}</h2></div>
-            <div id="budget">Status der einzelnen Budgets</div>
+            <div id="budget">
+                <h3>Butgetübersicht</h3>
+                    <div class="budgetlist">
+
+                    {% for key, value in budget_dict.items() %}
+
+                    <div>
+                       <h4> {{ key }} </h4>
+                           <div class="progress">
+                              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="{{ value }}"></div>
+                           </div>
+                    </div>
+
+                    {% endfor %}
+                    </div>
+
+            </div>
             <div id="verlauf">Monatsverlauf Ausgabe im Vergleich Budget</div>
             <div id="kreisdiagramm">Kreisdiagram Anteil an den Gesamtausgabe</div>
             <div id="blank">Puffer</div>

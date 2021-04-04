@@ -11,7 +11,7 @@ app = Flask("templates")
 @app.route("/")
 def index():
 
-    return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen())
+    return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen(), budget_dict=daten.umwandlung_budget())
 
 
 @app.route("/add-ausgabe/", methods=['GET', 'POST'])
