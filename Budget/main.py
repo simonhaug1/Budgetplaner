@@ -2,6 +2,7 @@ from flask import Flask, url_for
 from flask import render_template
 from flask import request
 from flask import redirect
+from datetime import datetime
 
 import daten
 
@@ -15,13 +16,13 @@ def index():
 
 
 @app.route("/add-ausgabe/", methods=['GET', 'POST'])
-def ausgabe_hinzufügen():
+def ausgabe_hinzufügen(zeitpunkt=None):#Was macht ZEitpunkt=None??????
     if request.method == 'POST':
         ausgabe_name = request.form['ausgabe_name']
         ausgabe_number = request.form['ausgabe_number']
-        ausgabe_kategorie = request.form['kategorie']
+        ausgabe_kategorie = request.form['ausgabe_kategorie']
         ausgabe_date = request.form['ausgabe_date']
-        ausgabe = daten.ausgabe_speichern(ausgabe_name, ausgabe_number, ausgabe_kategorie, ausgabe_date)
+        ausgabe = daten.ausgabe_speichern(ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name)
         return redirect('/')
 
 

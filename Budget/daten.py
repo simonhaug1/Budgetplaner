@@ -14,14 +14,14 @@ def speichern(datei, key, value):
     with open(datei, "w") as open_file:
         json.dump(datei_inhalt, open_file)
 
-def speichern_m_Varibles(datei, key, value1, value2, value3):
+def speichern_m_Variables(datei, key, value1, value2, value3, value4):
     try:
         with open(datei) as open_file:
             datei_inhalt = json.load(open_file)
     except FileNotFoundError:
         datei_inhalt = {}
 
-    datei_inhalt[str(key)] = [value1, value2, value3]
+    datei_inhalt[str(key)] = [value1, value2, value3, value4]
 
 
     with open(datei, "w") as open_file:
@@ -82,10 +82,11 @@ def budget_zusammenzaehlen():
 
 
 
-def ausgabe_speichern(ausgabe_name, ausgabe_number, kategorie, ausgabe_date):
+def ausgabe_speichern(ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name):
     datei_name = "ausgabe.json"
-    speichern_m_Varibles(datei_name, ausgabe_name, ausgabe_number, kategorie, ausgabe_date)
-    return ausgabe_name, ausgabe_number, kategorie, ausgabe_date
+    zeitpunkt = datetime.now()
+    speichern_m_Variables(datei_name, zeitpunkt, ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name)
+    return zeitpunkt, ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name
 
 
 def budget_laden():
