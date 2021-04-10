@@ -12,14 +12,15 @@
                     <div class="budgetlist">
 
                     {% for key, value in budget_dict.items() %}
-
+                        {% for i, j in kat.items() %}
                     <div>
                        <h4> {{ key }} </h4>
                            <div class="progress">
-                              <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="{{ value }}"></div>
+                              <div class="progress-bar" role="progressbar" style="width: calc(100% /  {{ value }} * {{ j }})" aria-valuenow="{{ausgabe_p_kategorie}}" aria-valuemin="0" aria-valuemax="{{ value }}"></div>
                            </div>
                     </div>
 
+                        {% endfor %}
                     {% endfor %}
                     </div>
 
