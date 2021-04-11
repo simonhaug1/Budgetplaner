@@ -38,6 +38,20 @@ def umwandlung_budget():
         budget_dict = json.loads(json_als_dict)
         return budget_dict
 
+
+# ------Listet mit die Ausgaben aus dem json als dict auf
+def umwandlung_ausgaben():
+    with open("ausgabe.json") as open_file:
+        json_als_dict = open_file.read()
+        ausgaben_dict = json.loads(json_als_dict)
+
+    ausgaben_auflistung = {}
+
+    for key, value in ausgaben_dict.items():
+        ausgaben_auflistung[value[0]] = value[3]
+
+    return ausgaben_auflistung
+
 def budget_speichern(budget_name, budget_number):
     datei_name = "budget.json"
     speichern(datei_name, budget_name, budget_number)

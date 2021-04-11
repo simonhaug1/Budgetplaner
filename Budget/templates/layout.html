@@ -2,16 +2,16 @@
 <html lang="de">
   <head>
       <meta charset="utf-8">
-        <title>Hello</title>
+        <title>Budgetplaner</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
   </head>
 
     {% block content %}{% endblock %}
 
-
+        <a href="/add-ausgabe/"><div class="add_ausgabe_button">+</div></a>
       <footer>
-            <div><a href="/add-ausgabe/">Ausgaben</a></div>
+            <div><a href="/ausgaben/">Ausgaben</a></div>
             <div><a href="/">Start</a></div>
             <div><a href="/budget/">Budgets</a></div>
         </footer>

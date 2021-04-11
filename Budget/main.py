@@ -46,6 +46,10 @@ def auflisten():
 
     return render_template("budget.html", budget_dict=daten.umwandlung_budget())
 
+@app.route("/ausgaben/")
+def ausgaben_auflisten():
+
+    return render_template("ausgaben.html", ausgaben_auflistung=daten.umwandlung_ausgaben())
 
 
 if __name__ == "__main__":
