@@ -65,7 +65,7 @@ def ausgaben_zusammenzaehlen():
         return summe
 
 
-#------Gibt mir die Summe alle eingegeben Budgets aus
+#------Gibt mir die Summe aller selbst definierten Budgets aus
 def budget_zusammenzaehlen():
     with open('budget.json') as open_file:
         json_als_string = open_file.read()
@@ -79,7 +79,7 @@ def budget_zusammenzaehlen():
             summe_b = sum(count)
         return summe_b
 
-#------Gibt mir die Summe der einzelnen Budgetkategorien aus
+#------Gibt mir die Summe der eingetragenen Ausgaben, sortiert nach Budgetkategorien aus
 def summe_n_budget():
     with open('ausgabe.json') as open_file:
         json_als_string = open_file.read()
@@ -91,6 +91,9 @@ def summe_n_budget():
 
     kat = {}
 
+    budget_max = []
+    ausgaben_stand = []
+
     for kategorie in bud:
         ausgabe_p_kategorie = 0
         for key, value in aus.items():
@@ -101,7 +104,21 @@ def summe_n_budget():
             else:
                 pass
 
-        return kat
+        for i, j in kat.items():
+            budget_max.append(i)
+            ausgaben_stand.append(int(j))
+
+        budget_zahlen = {}
+        for i in range(len(budget_max)):
+            budget_zahlen[budget_max[i]] = ausgaben_stand[i]
+        # print("budegt\n", budget_zahlen )
+        # print("stand\n",bud)
+
+        for key, val in bud.items():
+            if key in budget_zahlen:
+                budget_zahlen[key] = [budget_zahlen[key], int(val)]
+
+        return budget_zahlen
 
 
 def ausgabe_speichern(ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name):

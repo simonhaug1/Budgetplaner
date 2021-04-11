@@ -11,16 +11,13 @@
                 <h3>Butgetübersicht</h3>
                     <div class="budgetlist">
 
-                    {% for key, value in budget_dict.items() %}
-                        {% for i, j in kat.items() %}
-                    <div>
-                       <h4> {{ key }} </h4>
-                           <div class="progress">
-                              <div class="progress-bar" role="progressbar" style="width: calc(100% /  {{ value }} * {{ j }})" aria-valuenow="{{ausgabe_p_kategorie}}" aria-valuemin="0" aria-valuemax="{{ value }}"></div>
-                           </div>
-                    </div>
-
-                        {% endfor %}
+                    {% for key, value in budget_zahlen.items() %}
+                        <div>
+                           <h4> {{ key }} </h4>
+                               <div class="progress">
+                                  <div class="progress-bar" role="progressbar" style="width: calc(100% /  {{ value[1] }} * {{ value[0] }})" aria-valuenow="{{ausgabe_p_kategorie}}" aria-valuemin="0" aria-valuemax="{{ value[1] }}"></div>
+                               </div>
+                        </div>
                     {% endfor %}
                     </div>
 
