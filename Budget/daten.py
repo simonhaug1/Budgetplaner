@@ -132,7 +132,7 @@ def summe_n_budget():
             if key in budget_zahlen:
                 budget_zahlen[key] = [budget_zahlen[key], int(val)]
 
-        return budget_zahlen
+    return budget_zahlen
 
 
 def ausgabe_speichern(ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name):
