@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import date
 import json
 
 
@@ -28,29 +29,41 @@ def speichern_m_Variables(datei, key, value1, value2, value3, value4):
         json.dump(datei_inhalt, open_file)
 
 def umwandlung_json(datei):
+
     with open(datei) as open_file:
         json_als_dict = open_file.read()
         mein_eingelesenes_dict = loads(json_als_dict)
 
+
+
 def umwandlung_budget():
-    with open("budget.json") as open_file:
-        json_als_dict = open_file.read()
-        budget_dict = json.loads(json_als_dict)
+    try:
+        with open("budget.json") as open_file:
+            json_als_dict = open_file.read()
+            budget_dict = json.loads(json_als_dict)
+            return budget_dict
+    except FileNotFoundError:
+        budget_dict = {"Keine Daten vorhanden": ""}
         return budget_dict
 
 
 # ------Listet mit die Ausgaben aus dem json als dict auf
 def umwandlung_ausgaben():
-    with open("ausgabe.json") as open_file:
-        json_als_dict = open_file.read()
-        ausgaben_dict = json.loads(json_als_dict)
+    try:
+        with open("ausgabe.json") as open_file:
+            json_als_dict = open_file.read()
+            ausgaben_dict = json.loads(json_als_dict)
 
-    ausgaben_auflistung = {}
+        ausgaben_auflistung = {}
 
-    for key, value in ausgaben_dict.items():
-        ausgaben_auflistung[value[0]] = value[3]
+        for key, value in ausgaben_dict.items():
+            ausgaben_auflistung[value[3]] = value[0]
 
-    return ausgaben_auflistung
+        return ausgaben_auflistung
+    except FileNotFoundError:
+        ausgaben_auflistung = {" ": "Keine Daten vorhanden"}
+        return ausgaben_auflistung
+
 
 def budget_speichern(budget_name, budget_number):
     datei_name = "budget.json"
@@ -65,75 +78,88 @@ def ausgaben_zusammenzaehlen():
     # return value1
 
 
-    with open('ausgabe.json') as open_file:
-        json_als_string = open_file.read()
-        mein_dict = json.loads(json_als_string)
 
-        count = []
+    try:
+        with open('ausgabe.json') as open_file:
+            json_als_string = open_file.read()
+            mein_dict = json.loads(json_als_string)
 
-        for i, j in mein_dict.items():
-            count.append(j[0])
-            count = list(map(float, count))
+            count = []
 
-            summe = sum(count)
+            for i, j in mein_dict.items():
+                count.append(j[0])
+                count = list(map(float, count))
+
+                summe = sum(count)
+            return summe
+    except FileNotFoundError:
+        summe = 0
         return summe
 
 
 #------Gibt mir die Summe aller selbst definierten Budgets aus
 def budget_zusammenzaehlen():
-    with open('budget.json') as open_file:
-        json_als_string = open_file.read()
-        mein_dict = json.loads(json_als_string)
+    try:
+        with open('budget.json') as open_file:
+            json_als_string = open_file.read()
+            mein_dict = json.loads(json_als_string)
 
-        count = []
-        for i, j in mein_dict.items():
-            count.append(j)
-            count = list(map(float, count))
+            count = []
+            for i, j in mein_dict.items():
+                count.append(j)
+                count = list(map(float, count))
 
-            summe_b = sum(count)
+                summe_b = sum(count)
+            return summe_b
+    except FileNotFoundError:
+        summe_b = 1
         return summe_b
+
 
 #------Gibt mir die Summe der eingetragenen Ausgaben, sortiert nach Budgetkategorien aus
 def summe_n_budget():
-    with open('ausgabe.json') as open_file:
-        json_als_string = open_file.read()
-        aus = json.loads(json_als_string)
+    try:
+        with open('ausgabe.json') as open_file:
+            json_als_string = open_file.read()
+            aus = json.loads(json_als_string)
 
-    with open('budget.json') as open_file:
-        json_als_string = open_file.read()
-        bud = json.loads(json_als_string)
+        with open('budget.json') as open_file:
+            json_als_string = open_file.read()
+            bud = json.loads(json_als_string)
 
-    kat = {}
+        kat = {}
 
-    budget_max = []
-    ausgaben_stand = []
+        budget_max = []
+        ausgaben_stand = []
 
-    for kategorie in bud:
-        ausgabe_p_kategorie = 0
-        for key, value in aus.items():
-            if value[1] == kategorie:
+        for kategorie in bud:
+            ausgabe_p_kategorie = 0
+            for key, value in aus.items():
+                if value[1] == kategorie:
 
-                ausgabe_p_kategorie += float(value[0])
-                kat[kategorie] = ausgabe_p_kategorie
-            else:
-                pass
+                    ausgabe_p_kategorie += float(value[0])
+                    kat[kategorie] = ausgabe_p_kategorie
+                else:
+                    pass
 
-        for i, j in kat.items():
-            budget_max.append(i)
-            ausgaben_stand.append(int(j))
+            for i, j in kat.items():
+                budget_max.append(i)
+                ausgaben_stand.append(int(j))
 
-        budget_zahlen = {}
-        for i in range(len(budget_max)):
-            budget_zahlen[budget_max[i]] = ausgaben_stand[i]
-        # print("budegt\n", budget_zahlen )
-        # print("stand\n",bud)
+            budget_zahlen = {}
+            for i in range(len(budget_max)):
+                budget_zahlen[budget_max[i]] = ausgaben_stand[i]
+            # print("budegt\n", budget_zahlen )
+            # print("stand\n",bud)
 
-        for key, val in bud.items():
-            if key in budget_zahlen:
-                budget_zahlen[key] = [budget_zahlen[key], int(val)]
+            for key, val in bud.items():
+                if key in budget_zahlen:
+                    budget_zahlen[key] = [budget_zahlen[key], int(val)]
 
-    return budget_zahlen
-
+        return budget_zahlen
+    except FileNotFoundError:
+        budget_zahlen = {"Keine Daten vorhanden": [1, 0]}
+        return budget_zahlen
 
 def ausgabe_speichern(ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name):
     datei_name = "ausgabe.json"
@@ -152,3 +178,9 @@ def budget_laden():
         datei_inhalt = {}
 
     return datei_inhalt
+
+
+def datum_anzeigen():
+    today = date.today()
+    datum = today.strftime("%B %Y")
+    return datum

@@ -2,10 +2,14 @@
 {% block content %}
 <body class="index">
         <div class="wrapper">
-            <div id="titel"><h2>CHF {{ summe }}</h2>
+            <div id="titel">
+                <h1>DASHBOARD</h1>
+                <div class="datum"><h4> {{ datum }} </h4></div>
+                <h2>CHF {{ summe }}</h2>
              <div class="progress">
                  <div class="progress-bar" role="progressbar" style="width: calc(100% / {{summe_b}} * {{summe}})" aria-valuenow="{{ summe}}" aria-valuemin="0" aria-valuemax="{{ summe_b }}"></div>
              </div>
+
             </div>
             <div id="budget">
                 <h3>Butgetübersicht</h3>

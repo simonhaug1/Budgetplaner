@@ -10,16 +10,16 @@ font-size: 1.75rem;
 
 /*https://color.adobe.com/de/explore?page=2
 
-/* Color Theme Swatches in Hex
-.color-theme_paleta-color-01-1-hex { color: #226473; }
-.color-theme_paleta-color-01-2-hex { color: #FBBC49; }
-.color-theme_paleta-color-01-3-hex { color: #FAA01C; }
-.color-theme_paleta-color-01-4-hex { color: #E3D5C8; }
-.color-theme_paleta-color-01-5-hex { color: #B29577; }
-*/
+/* Color Theme Swatches in Hex */
+/*.Farbdesign-6-1-hex { color: #012E40; }
+.Farbdesign-6-2-hex { color: #027367; }
+.Farbdesign-6-3-hex { color: #F2B66D; }
+.Farbdesign-6-4-hex { color: #F29057; }
+.Farbdesign-6-5-hex { color: #732D2D; }*/
+
 
 body * {
-  color: black;
+  color: #012E40;
   font-family: arial;
   /*font-family: 'Ubuntu', sans-serif;*/
   font-family: 'Quicksand', sans-serif;
@@ -33,23 +33,27 @@ li {
 }
 
 h1 {
-    font-size: 3rem;
-    color: black;
-    }
-
-h2 {font-size: 5rem;
-    color: #226473;
-    font-weight: 700;
+    font-size: 4rem;
+    font-weight:700;
     text-align: center;
 
+    }
+
+h2 {font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+}
+#titel h2 {
+    color: #F29057;
+}
+
+h3 {
+    font-size: 2rem;
 }
 /****************************************************************
 ***************************************************************/
 /*Allgemeines Design*/
 
-.add_ausgabe, .add_budget, .budget {
-    background-color: #F0F0F0;
-}
 
 
 
@@ -68,7 +72,7 @@ display: flex;
 justify-content: space-around;
 width: 100%;
 left: 0px;
-background-color: #B29577;
+background-color: #F2B66D;
 height: 50px;
 }
 footer i.bi {line-height: 1.8;}
@@ -107,10 +111,14 @@ grid-area: 3 / 2 / 4 / 3;
 grid-area: 4 / 2 / 5 / 3;
 }
 
-/*.wrapper div{
-background-color: #E3D5C8;
-}*/
+.datum {
+text-align: center;
+margin-bottom: 30px;
+}
 
+.progress-bar {
+background-color: #F29057;
+}
 /****************************************************************
 ***************************************************************/
 /*add-Ausgabe*/

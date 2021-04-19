@@ -12,7 +12,7 @@ app = Flask("templates")
 @app.route("/")
 def index():
 
-    return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen(), budget_zahlen=daten.summe_n_budget(), summe_b=daten.budget_zusammenzaehlen(), kat=daten.summe_n_budget())
+    return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen(), budget_zahlen=daten.summe_n_budget(), summe_b=daten.budget_zusammenzaehlen(), kat=daten.summe_n_budget(), datum=daten.datum_anzeigen())
 
 
 @app.route("/add-ausgabe/", methods=['GET', 'POST'])
