@@ -8,6 +8,10 @@
 font-size: 1.75rem;
 }
 
+.bi-trash, .bi-pencil {
+font-size: 1.25rem;
+padding-left: 15px;
+}
 /*https://color.adobe.com/de/explore?page=2
 
 /* Color Theme Swatches in Hex */
@@ -59,7 +63,7 @@ h3 {
 
 
 body {
-    padding: 5vw 0;
+    padding: 5vw 85px;
     max-width: 90vw;
     margin: auto!important;
     }
@@ -167,5 +171,7 @@ background-color: #F29057;
 
 /****************************************************************
 ***************************************************************/
-/*budget*/
-
+/*tables*/
+.last {
+    text-align: right;
+}
