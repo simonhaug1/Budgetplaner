@@ -4,13 +4,20 @@
 <h1>AUSGABEN</h1>
           <table class="table">
               <tbody>
+    <tr>
+        <th> Datum </th>
+        <th> Bezeichnung </th>
+        <th> Betrag </th>
+        <th> Kategorie </th>
+    </tr>
 
-
-    {% for key, value in ausgaben_auflistung.items() %}
+    {% for key, value in ausgaben_dict.items() %}
 
     <tr>
-       <th> {{ key }} </th>
-       <td> {{ value }} </td>
+        <td> {{ value[2] }} </td>
+        <td> {{ value[3] }} </td>
+        <td> {{ value[0] }} </td>
+        <td> {{ value[1] }} </td>
     </tr>
 
     {% endfor %}

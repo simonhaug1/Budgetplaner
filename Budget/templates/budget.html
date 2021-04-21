@@ -4,19 +4,22 @@
 <h1>BUDGET</h1>
           <table class="table">
               <tbody>
-
+    <tr>
+       <th> Kategorie </th>
+       <th> Budget </th>
+    </tr>
 
     {% for key, value in budget_dict.items() %}
 
     <tr>
-       <th> {{ key }} </th>
+       <td> {{ key }} </td>
        <td> {{ value }} </td>
     </tr>
 
     {% endfor %}
               </tbody>
  </table>
-<a href="/add-budget/">Budget hinzufügen</a>
+<a href="/add-budget/">Budgetkategorie hinzufügen</a>
 
            </body>
 {% endblock %}
