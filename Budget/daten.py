@@ -74,7 +74,7 @@ def budget_speichern(budget_name, budget_number):
     return budget_name, budget_number
 
 
-# Funktion die mir die Summe alle eingegeben Ausgaben ausgibt
+# Funktion die mir die Summe aller eingegeben Ausgaben vom aktuellen Monat ausgibt
 def ausgaben_zusammenzaehlen():
     try:
         with open('ausgabe.json') as open_file:
@@ -82,12 +82,16 @@ def ausgaben_zusammenzaehlen():
             mein_dict = json.loads(json_als_string)
 
             count = []
+            today = date.today()
+            datum = today.strftime('%Y-%m')
+            print("Heutiges Datum", datum)
 
             for i, j in mein_dict.items():
-                count.append(j[0])
-                count = list(map(float, count))
-
-                summe = sum(count)
+                date_time_ausgabe = j[2].rsplit("-", 1)[0]
+                if date_time_ausgabe == datum:
+                    count.append(j[0])
+                    count = list(map(float, count))
+                    summe = sum(count)
             return summe
     except FileNotFoundError:
         summe = 0
