@@ -49,17 +49,14 @@ def umwandlung_budget():
         return budget_dict
 
 
-# Funktion zum Umwandeln der erfassten Ausgaben aus der json-Datei in ein dict.
+# Funktion zum Umwandeln der erfassten Ausgaben aus der json-Datei in ein dict, inkl. Sortierung nach Datum
 def umwandlung_ausgaben():
     try:
         with open("ausgabe.json") as open_file:
             json_als_dict = open_file.read()
-            ausgaben_dict = json.loads(json_als_dict)
-
-        # ausgaben_auflistung = {}
-
-        # for key, value in ausgaben_dict.items():
-        #     ausgaben_auflistung[value[2]] = value[0]
+            ausgaben_dict_cache = json.loads(json_als_dict)
+            ausgaben_dict_cache = sorted(ausgaben_dict_cache.items(), key=lambda x: x[1][2], reverse=True) #sortiert das dict nach eingegeben Datum
+            ausgaben_dict = dict(ausgaben_dict_cache)
 
         return ausgaben_dict
     except FileNotFoundError:
@@ -82,6 +79,7 @@ def ausgaben_zusammenzaehlen():
             mein_dict = json.loads(json_als_string)
 
             count = []
+            summe = 0
             today = date.today()
             datum = today.strftime('%Y-%m')
             print("Heutiges Datum", datum)
@@ -92,6 +90,8 @@ def ausgaben_zusammenzaehlen():
                     count.append(j[0])
                     count = list(map(float, count))
                     summe = sum(count)
+                else:
+                    summe += 0
             return summe
     except FileNotFoundError:
         summe = 0
@@ -132,12 +132,15 @@ def summe_n_budget():
 
         budget_max = []
         ausgaben_stand = []
+        count = []
+        today = date.today()
+        datum = today.strftime('%Y-%m')
 
         for kategorie in bud:
             ausgabe_p_kategorie = 0
             for key, value in aus.items():
-                if value[1] == kategorie:
-
+                date_time_ausgabe = key.rsplit("-", 1)[0]
+                if value[1] == kategorie and date_time_ausgabe == datum:
                     ausgabe_p_kategorie += float(value[0])
                     kat[kategorie] = ausgabe_p_kategorie
                 else:
