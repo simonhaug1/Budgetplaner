@@ -5,6 +5,14 @@
             <div id="titel">
                 <h1>DASHBOARD</h1>
                 <div class="datum"><h4> {{ datum }} </h4></div>
+                  <div class="form-group">
+                    <label for="choose_month">Wähle einen Monat</label>
+                    <select class="form-control" id="choose_month">
+                        {% for i in month %}
+                            <option>{{i}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
                 <h2>CHF {{ summe }}</h2>
              <div class="progress">
                  <div class="progress-bar" role="progressbar" style="width: calc(100% / {{summe_b}} * {{summe}})" aria-valuenow="{{ summe}}" aria-valuemin="0" aria-valuemax="{{ summe_b }}"></div>

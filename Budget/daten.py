@@ -1,6 +1,8 @@
 from datetime import datetime
 from datetime import date
 import json
+import datetime as dt
+
 
 # Allgemeine Speichern Funktion
 def speichern(datei, key, value):
@@ -170,3 +172,20 @@ def datum_anzeigen():
     today = date.today()
     datum = today.strftime("%B %Y")
     return datum
+
+
+# Monatsauswahl auf Startseite
+def monat_wechlser():
+    with open('ausgabe.json') as open_file:
+        json_als_string = open_file.read()
+        aus = json.loads(json_als_string)
+
+    # print(aus)
+    month = []
+
+    for key, value in aus.items():
+        reuseday = dt.datetime.strptime(value[2], '%Y-%m-%d')
+        singlemonth = reuseday.strftime('%B %Y')
+        if singlemonth not in month:
+            month.append(singlemonth)
+    return month
