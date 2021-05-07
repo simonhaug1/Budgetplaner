@@ -9,10 +9,10 @@ import daten
 app = Flask("templates")
 
 # Erstellt mir die Startseite "Dashboard", wo ich die Übersicht über meine Ausgaben erhalten
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
 
-    return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen(), budget_zahlen=daten.summe_n_budget(), summe_b=daten.budget_zusammenzaehlen(), kat=daten.summe_n_budget(), datum=daten.datum_anzeigen(), month=daten.monat_wechlser())
+    return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen(), budget_zahlen=daten.summe_n_budget(), summe_b=daten.budget_zusammenzaehlen(), kat=daten.summe_n_budget(), datum=daten.datum_anzeigen(), month=daten.monat_wechlser(), monat_auswahl=daten.monat_auswahl())
 
 
 # Erstellt mir die Unterseite "Ausgabe hinzufügen", wo ich neue Ausgaben erfassen kann

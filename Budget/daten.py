@@ -2,6 +2,7 @@ from datetime import datetime
 from datetime import date
 import json
 import datetime as dt
+from flask import request
 
 
 # Allgemeine Speichern Funktion
@@ -83,8 +84,20 @@ def ausgaben_zusammenzaehlen():
             count = []
             summe = 0
             today = date.today()
-            datum = today.strftime('%Y-%m')
-            print("Heutiges Datum", datum)
+
+
+            # ?
+            try:
+                m_2 = monat_auswahl()
+                m_2_format = dt.datetime.strptime(m_2, '%B %Y')
+            except TypeError:
+                m_2 = today.strftime('%B %Y')
+                m_2_format = dt.datetime.strptime(m_2, '%B %Y')
+
+
+            datum = m_2_format.strftime('%Y-%m')
+
+
 
             for i, j in mein_dict.items():
                 date_time_ausgabe = j[2].rsplit("-", 1)[0]
@@ -138,6 +151,7 @@ def summe_n_budget():
         today = date.today()
         datum = today.strftime('%Y-%m')
 
+
         for kategorie in bud:
             ausgabe_p_kategorie = 0
             for key, value in aus.items():
@@ -189,3 +203,9 @@ def monat_wechlser():
         if singlemonth not in month:
             month.append(singlemonth)
     return month
+
+# Gewählter Monat ausgeben
+def monat_auswahl():
+    if request.method == 'POST':
+        month_name = request.form['select_month']
+        return month_name
