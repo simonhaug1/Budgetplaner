@@ -5,14 +5,14 @@
             <div id="titel">
                 <h1>DASHBOARD</h1>
                 <div class="datum">
-                    <h4> {{ datum }} | {{ monat_auswahl }}</h4>
+                    <h4> {{ datum }} </h4>
                 </div>
                   <div class="form-group">
 
                       <form method="POST">
-                            <label for="choose_month">Wähle einen Monat</label>
                         <select class="form-control" id="choose_month" name="select_month">
-                        {% for i in month %}
+                            <option>Wähle einen Monat</option>
+                            {% for i in month %}
                             <option>{{i}}</option>
                         {% endfor %}
                     </select>

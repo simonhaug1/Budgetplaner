@@ -86,7 +86,7 @@ def ausgaben_zusammenzaehlen():
             today = date.today()
 
 
-            # ?
+            # Gibt mir für die Augsbe der Gesamtsumme des gewünschten Monats aus, falls keiner ausgewählt ist, wird der aktuelle Monat ausgewählt
             try:
                 m_2 = monat_auswahl()
                 m_2_format = dt.datetime.strptime(m_2, '%B %Y')
@@ -149,13 +149,23 @@ def summe_n_budget():
         ausgaben_stand = []
         count = []
         today = date.today()
-        datum = today.strftime('%Y-%m')
+
+        try:
+            m_2 = monat_auswahl()
+            m_2_format = dt.datetime.strptime(m_2, '%B %Y')
+        except TypeError:
+            m_2 = today.strftime('%B %Y')
+            m_2_format = dt.datetime.strptime(m_2, '%B %Y')
+
+        datum = m_2_format.strftime('%Y-%m')
+
+
 
 
         for kategorie in bud:
             ausgabe_p_kategorie = 0
             for key, value in aus.items():
-                date_time_ausgabe = key.rsplit("-", 1)[0]
+                date_time_ausgabe = value[2].rsplit("-", 1)[0]
                 if value[1] == kategorie and date_time_ausgabe == datum:
                     ausgabe_p_kategorie += float(value[0])
                     kat[kategorie] = ausgabe_p_kategorie
@@ -184,7 +194,15 @@ def summe_n_budget():
 # Funktion um aktuelles Datum (Monat) auszugeben
 def datum_anzeigen():
     today = date.today()
-    datum = today.strftime("%B %Y")
+
+    try:
+        m_2 = monat_auswahl()
+        m_2_format = dt.datetime.strptime(m_2, '%B %Y')
+    except TypeError:
+        m_2 = today.strftime('%B %Y')
+        m_2_format = dt.datetime.strptime(m_2, '%B %Y')
+
+    datum = m_2_format.strftime('%B %Y')
     return datum
 
 
@@ -202,10 +220,12 @@ def monat_wechlser():
         singlemonth = reuseday.strftime('%B %Y')
         if singlemonth not in month:
             month.append(singlemonth)
+    month.sort(key=lambda date: datetime.strptime(date, "%B %Y")) #sortiert mir die Monate nach Datum
     return month
 
 # Gewählter Monat ausgeben
 def monat_auswahl():
     if request.method == 'POST':
         month_name = request.form['select_month']
+
         return month_name
