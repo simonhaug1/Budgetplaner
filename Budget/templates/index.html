@@ -31,7 +31,8 @@
 
                     {% for key, value in budget_zahlen.items() %}
                         <div>
-                           <h4> {{ key }} </h4>
+                           <h4 class="inline"> {{ key }} </h4>
+                            <p class="inline">{{value[0] }} von {{value[1]}} </p>
                             <div class="progress">
                                   <div class="progress-bar" role="progressbar" style="width: calc(100% /  {{ value[1] }} * {{ value[0] }})" aria-valuenow="{{ausgabe_p_kategorie}}" aria-valuemin="0" aria-valuemax="{{ value[1] }}"></div>
                             </div>

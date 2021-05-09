@@ -54,6 +54,14 @@ h2 {font-size: 3rem;
 h3 {
     font-size: 2rem;
 }
+
+.inline {
+    display: inline!important;
+}
+p.inline {
+    margin: 0!important;
+    padding: 0!important;
+    }
 /****************************************************************
 ***************************************************************/
 /*Allgemeines Design*/
