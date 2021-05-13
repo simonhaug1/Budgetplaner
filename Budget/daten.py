@@ -229,3 +229,23 @@ def monat_auswahl():
         month_name = request.form['select_month']
 
         return month_name
+
+# Budget nach Index löschen
+def butget_loeschen(n):
+    with open("budget.json") as open_file:
+        json_als_dict = open_file.read()
+        budget_dict = json.loads(json_als_dict)
+    n = int(n) - 1
+    e = list(budget_dict)[n]
+
+    try:
+        for key, value in budget_dict.items():
+            if key == e:
+                del budget_dict[key]
+
+                with open('budget.json', 'w') as changed_file:
+                    budget_dict = json.dump(budget_dict, changed_file)
+        return e
+
+    except (IndexError, RuntimeError):
+        pass
