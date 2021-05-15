@@ -49,16 +49,22 @@ def auflisten():
     return render_template("budget.html", budget_dict=daten.umwandlung_budget())
 
 
-
+#Löschen einer Budgetskategorie
 @app.route("/delete-budget/", methods=['POST'])
 def delete_budget():
     if request.method == 'POST':
         index = request.form['delete-budget-button']
 
-    # daten.butget_loeschen(index)
-
     return render_template('delete-budget.html', buget_name=daten.butget_loeschen(index))
-    # return redirect('/budget/', index=index, budget_dict=daten.umwandlung_budget())
+
+
+# Löschen einer Ausgabe
+@app.route("/delete-ausgabe/", methods=['POST'])
+def delete_ausgabe():
+    if request.method == 'POST':
+        index = request.form['delete-ausgabe-button']
+
+    return render_template('delete-ausgabe.html', ausgabe_name=daten.ausgabe_loeschen(index))
 
 
 # Erstellt mir die Unterseite "Ausgaben", wo ich eine Auflistung aller meiner erfassten Ausgaben habe

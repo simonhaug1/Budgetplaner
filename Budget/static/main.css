@@ -183,3 +183,7 @@ background-color: #F29057;
 .last {
     text-align: right;
 }
+/****************************************************************
+***************************************************************/
+/*buttons*/
+.trash {border:none; background: transparent;}

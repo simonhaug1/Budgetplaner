@@ -15,10 +15,9 @@
     <tr>
        <td> {{ key }} </td>
        <td> {{ value }} </td>
-        <td> {{ loop.index }} </td>
-        <td class="last"><i class="bi bi-pencil"></i>
+        <td class="last">
             <form action="/delete-budget/" method="post">
-                <button name="delete-budget-button" type="submit" value="{{loop.index}}"><i class="bi bi-trash"></i></button>
+                <button class="trash" name="delete-budget-button" type="submit" value="{{loop.index}}"><i class="bi bi-trash"></i></button>
             </form>
 
 

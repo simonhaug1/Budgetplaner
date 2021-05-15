@@ -249,3 +249,26 @@ def butget_loeschen(n):
 
     except (IndexError, RuntimeError):
         pass
+
+
+# Ausgabe nach Index löschen
+def ausgabe_loeschen(n):
+    with open("ausgabe.json") as open_file:
+        json_als_dict = open_file.read()
+        ausgaben_dict_cache = json.loads(json_als_dict)
+        ausgaben_dict_cache = sorted(ausgaben_dict_cache.items(), key=lambda x: x[1][2], reverse=True)  # sortiert das dict nach eingegeben Datum
+        ausgaben_dict = dict(ausgaben_dict_cache)
+
+    n = int(n) - 1
+    e = list(ausgaben_dict)[n]
+
+    try:
+        for key, value in ausgaben_dict.items():
+            if key == e:
+                del ausgaben_dict[key]
+
+                with open('ausgabe.json', 'w') as changed_file:
+                    ausgaben_dict = json.dump(ausgaben_dict, changed_file)
+
+    except (IndexError, RuntimeError):
+        pass
