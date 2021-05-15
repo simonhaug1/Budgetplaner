@@ -19,7 +19,8 @@
                           <button type="submit">Speichern</button>
                         </form>
                   </div>
-                <h2>CHF {{ summe }}</h2>
+                <h2 class="summe">{{ summe }}</h2>
+                 <p class="summe">Gesamtbudget: {{summe_b}} </p>
              <div class="progress">
                  <div class="progress-bar" role="progressbar" style="width: calc(100% / {{summe_b}} * {{summe}})" aria-valuenow="{{ summe}}" aria-valuemin="0" aria-valuemax="{{ summe_b }}"></div>
              </div>

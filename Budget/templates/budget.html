@@ -19,13 +19,17 @@
             <form action="/delete-budget/" method="post">
                 <button class="trash" name="delete-budget-button" type="submit" value="{{loop.index}}"><i class="bi bi-trash"></i></button>
             </form>
-
-
-
         </td>
     </tr>
 
     {% endfor %}
+
+    <tr>
+       <td> <strong>Gesamtbudget </strong></td>
+       <td> <strong>{{ summe_b }} </strong></td>
+        <td class="last">
+        </td>
+    </tr>
               </tbody>
  </table>
 <a href="/add-budget/">Budgetkategorie hinzufügen</a>

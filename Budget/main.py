@@ -46,7 +46,7 @@ def budget_hinzufügen():
 # Erstellt mir die Unterseite "Budget", wo ich eine Auflistung aller meiner erfassten Budgetkategorie habe
 @app.route("/budget/")
 def auflisten():
-    return render_template("budget.html", budget_dict=daten.umwandlung_budget())
+    return render_template("budget.html", budget_dict=daten.umwandlung_budget(), summe_b=daten.budget_zusammenzaehlen())
 
 
 #Löschen einer Budgetskategorie

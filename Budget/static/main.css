@@ -58,10 +58,12 @@ h3 {
 .inline {
     display: inline!important;
 }
-p.inline {
+p.inline, p.inline_big  {
     margin: 0!important;
     padding: 0!important;
     }
+h2.summe {text-align: center;}
+p.summe {text-align: right;}
 /****************************************************************
 ***************************************************************/
 /*Allgemeines Design*/
