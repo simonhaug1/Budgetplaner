@@ -3,8 +3,8 @@ from flask import render_template
 from flask import request
 from flask import redirect
 from datetime import datetime
-
 import daten
+import viz
 
 app = Flask("templates")
 
@@ -12,7 +12,7 @@ app = Flask("templates")
 @app.route("/", methods=['GET', 'POST'])
 def index():
 
-    return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen(), budget_zahlen=daten.summe_n_budget(), summe_b=daten.budget_zusammenzaehlen(), kat=daten.summe_n_budget(), datum=daten.datum_anzeigen(), month=daten.monat_wechlser(), monat_auswahl=daten.monat_auswahl())
+    return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen(), budget_zahlen=daten.summe_n_budget(), summe_b=daten.budget_zusammenzaehlen(), kat=daten.summe_n_budget(), datum=daten.datum_anzeigen(), month=daten.monat_wechlser(), monat_auswahl=daten.monat_auswahl(), div_pie=viz.pie_chart_ausgaben())
 
 
 # Erstellt mir die Unterseite "Ausgabe hinzufügen", wo ich neue Ausgaben erfassen kann

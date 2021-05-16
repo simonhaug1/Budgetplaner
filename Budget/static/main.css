@@ -101,7 +101,7 @@ display: grid;
 grid-row-gap: 50px;
 grid-column-gap: 50px;
 grid-template-columns: 1fr 1fr;
-grid-template-rows: 1fr 1fr 1fr 1fr;
+grid-template-rows: 1fr 1.4fr;
 min-height: 80vh;
 }
 
@@ -110,20 +110,14 @@ grid-area: 1 / 1 / 2 / 3;
 }
 
 #budget {
-grid-area: 2 / 1 / 5 / 2;
-}
-
-#verlauf {
-grid-area: 2 / 2 / 3 / 3;
+grid-area: 2 / 1 / 3 / 2;
 }
 
 #kreisdiagramm {
-grid-area: 3 / 2 / 4 / 3;
+grid-area: 2 / 2 / 3 / 3;
 }
 
-#blank {
-grid-area: 4 / 2 / 5 / 3;
-}
+
 
 .datum {
 text-align: center;
@@ -133,6 +127,10 @@ margin-bottom: 30px;
 .progress-bar {
 background-color: #F29057;
 }
+
+.monatsauswahl {display: flex;}
+
+
 /****************************************************************
 ***************************************************************/
 /*add-Ausgabe*/
@@ -189,3 +187,9 @@ background-color: #F29057;
 ***************************************************************/
 /*buttons*/
 .trash {border:none; background: transparent;}
+
+/****************************************************************
+***************************************************************/
+/*Plotly Visualisierungen*/
+
+.

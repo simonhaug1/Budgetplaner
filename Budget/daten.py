@@ -272,3 +272,5 @@ def ausgabe_loeschen(n):
 
     except (IndexError, RuntimeError):
         pass
+
+# Plotly Visualisierungen

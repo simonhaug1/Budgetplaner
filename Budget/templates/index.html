@@ -9,7 +9,7 @@
                 </div>
                   <div class="form-group">
 
-                      <form method="POST">
+                      <form class="monatsauswahl" method="POST">
                         <select class="form-control" id="choose_month" name="select_month">
                             <option>Wähle einen Monat</option>
                             {% for i in month %}
@@ -42,9 +42,9 @@
                     </div>
 
             </div>
-            <div id="verlauf">Monatsverlauf Ausgabe im Vergleich Budget</div>
-            <div id="kreisdiagramm">Kreisdiagram Anteil an den Gesamtausgabe</div>
-            <div id="blank">Puffer</div>
+            <div id="kreisdiagramm"> <h3> Gesamtausgaben </h3>
+            {{ div_pie|safe }}
+            </div>
         </div>
 </body>
 {% endblock %}
