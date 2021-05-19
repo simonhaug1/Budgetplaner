@@ -8,7 +8,9 @@ import viz
 
 app = Flask("templates")
 
-# Erstellt mir die Startseite "Dashboard", wo ich die Übersicht über meine Ausgaben erhalten
+""" 
+Erstellt mir die Startseite "Dashboard", wo ich die Übersicht über meine Ausgaben erhalten
+"""
 @app.route("/", methods=['GET', 'POST'])
 def index():
 
@@ -46,7 +48,7 @@ def budget_hinzufügen():
 # Erstellt mir die Unterseite "Budget", wo ich eine Auflistung aller meiner erfassten Budgetkategorie habe
 @app.route("/budget/")
 def auflisten():
-    return render_template("budget.html", budget_dict=daten.umwandlung_budget(), summe_b=daten.budget_zusammenzaehlen())
+    return render_template("budget.html", budget_dict=daten.umwandlung_budget(), summe_b=daten.budget_zusammenzaehlen(), div_bar_budget=viz.barchart_budget())
 
 
 #Löschen einer Budgetskategorie
@@ -71,7 +73,7 @@ def delete_ausgabe():
 @app.route("/ausgaben/")
 def ausgaben_auflisten():
 
-    return render_template("ausgaben.html", ausgaben_dict=daten.umwandlung_ausgaben())
+    return render_template("ausgaben.html", ausgaben_dict=daten.umwandlung_ausgaben(), div_bar_ausgabe=viz.barchart_ausgaben())
 
 
 if __name__ == "__main__":

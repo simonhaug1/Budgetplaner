@@ -11,7 +11,7 @@ oder noch genügen freie Mittel hat.
 ## Projektidee
 Das Tool soll eine Übersicht über die bereits getätigten Ausgaben inkl. Status des 
 jeweiligen Budgets besitzen. Ausserdem sollen die Budgets selbst hinzugefügt, 
-gelöscht und bearbeitet werden können.
+und wieder gelöscht werden können.
 Das hinzufügen der Ausgaben soll einfach und schnell erfolgen, die vorher definierte 
 Budget-Kategorie soll entsprechend ausgewählt werden können.
 
@@ -21,6 +21,7 @@ Um `AppName`  starten zu können muss folgendes installiert werden:
 - `Python 3.9`
 - `Flask`
 - `Jinja2`
+- `Plotly`
 
 
 Das Tool kann danach von jedem Gerät aus dem Netzwerk über die IP Adresse und Port 5000 aufgerufen werden. 
@@ -33,8 +34,7 @@ Das Tool kann danach von jedem Gerät aus dem Netzwerk über die IP Adresse und 
 
 ### Dateneingabe
 Es sind für die Ausgaben und für die Festlegung der Budget-Kategorien Dateneingaben durch den Nutzer notwendig.
-Zum einen für das Festlegen der Budget-Kategorien und zum anderen für das Hinzufügen von Ausgaben.
-Die Eingaben werden in einem File auf dem System gespeichert.
+Die Eingabe erfolgt über ein Formular, der Inhalt wird in ein json-File gespeichert.
 
 ### Datenverarbeitung/Speicherung
 Alle Daten werden in json-Dateien im Ordner `data/` gespeichert. Dabei wird zwischen zwei Dateien unterschieden. Es gibt die `budget.json` und die `ausgaben.json`
@@ -52,15 +52,25 @@ Die Eingegebenen Ausgaben bzw. Budget-Kategorien werden direkt
 nach dem Erfassen in der jeweiligen Registerkarte als Liste angezeigt. 
 
 ## Benutzeranleitung
+Der Nutzer hat die möglichkeit eine neue Budget-Kateogire hinzuzufügen oder zu löschen, sowie eine Ausgabe hinzuzufügen oder zu löschen. 
+Ausserdem kann er im Dashboard die Ausgaben je Monat anzeigen lassen. Wie das genau funktioneirt, wird nachfolgende beschrieben.
 ### Budget hinzufügen
-Wenn man nach der Installation das erste mal auf die Seite geht, sind noch keine Daten vorhanden.
-Man kan entweder eine Ausgabe hinzufügen (ohne Budget) oder  zuerst seine Budget-Kategorien hinzufügen.
-Dazu wählt man im Menü `Budget hinzufügen` aus.
-![Budget](Budget/doku/budget.PNG)
+Wenn man nach der Installation das erste mal auf die Seite geht (Startseite), sind noch keine Daten vorhanden, das Dashboard zeigt in diesem Fall keine Daten an.
+Man kan nun entweder eine Ausgabe hinzufügen (ohne Budget) oder  zuerst seine Budget-Kategorien hinzufügen.
+Dazu wählt man im Menüband unten das Symbol `Budget` aus. Man wird auf die Budgetseite weitergeleitet und 
+hat nun die Möglichkeit `Budgetkategorie hinzufügen` anzuwählen. Es öffnet sich ein Eingabeformular wo man 
+die Bezeichnung und den Betrag angeben kann.
+![Budget](Budget/doku/budgetuebersicht.PNG)
 
 ### Ausgabe hinzufügen
-Im Menü wählt man `Ausgabe hinzufügen` aus um eine neue Ausgabe zu erfassen.
-![ausgabe](Budget/doku/ausgabe.PNG)
+Eine neue Ausgabe kann von jeder Unterseite durch das Plussymbol im unteren rechten Bildschirmrand erfassen.
+Es öffnet sich ein Eingabeformular wo man den Betrag, die vorher erfasste Budgetkategorie, das Datum sowie die Bezeichnung angeben kann.
+![ausgabe](Budget/doku/ausgaben.png)
 ### Übersicht über die Ausgaben verschaffen
-Im Menü kann man sich einen Überblick über alle in diesem Monat getätigten Ausgaben machen. 
-![dashboard](Budget/doku/dashboard.PNG)
+Auf der Startseite befindet sich das Dashboard, wo man sich einen Überblick über alle in diesem Monat 
+getätigten Ausgaben machen kann. Durch Auswahl des gewünschten Monats kann die Ansicht verändert werden (Standardmässig wird der aktuelle Monat angezeigt). 
+![dashboard](Budget/doku/dashboard.png)
+
+### Ausgabe oder Budget löschen
+Hat man eine Ausgabe oder eine Budgetkategorie falsch erfasst, oder möchte die 
+Kategorie ersetzten, hat man die Möglichkeit über das Löschen Symbol (Abfalleimer) den jeweiligen Eintrag zu entfernen.

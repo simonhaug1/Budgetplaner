@@ -2,7 +2,12 @@
 {% block content %}
 <body class="budget">
 <h1>BUDGET</h1>
-          <table class="table">
+
+        <div id="Barchart_budget">
+            {{ div_bar_budget|safe }}
+        </div>
+<hr>
+    <table class="table">
               <tbody>
     <tr>
        <th> Kategorie </th>
@@ -32,7 +37,9 @@
     </tr>
               </tbody>
  </table>
-<a href="/add-budget/">Budgetkategorie hinzufügen</a>
+<a href="{{ url_for('budget_hinzufügen') }}">Budgetkategorie hinzufügen</a>
+
+
 
            </body>
 {% endblock %}
