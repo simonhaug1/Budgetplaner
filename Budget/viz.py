@@ -16,7 +16,7 @@ def pie_chart_ausgaben():
         wert.append(value[0])
     df = pd.DataFrame(list(zip(name, wert)), columns=['Kategoriename', 'Wert'])
 
-    fig1 = px.pie(df, values="Wert", names='Kategoriename', title="Für mehr Informationen über die Grafik hovern", template="presentation")
+    fig1 = px.pie(df, values="Wert", names='Kategoriename', template="presentation")
     div_pie = plot(fig1, output_type="div")
     return div_pie
 

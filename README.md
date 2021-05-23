@@ -3,7 +3,7 @@ Den Überblick darüber zu behalten wohin der hart erarbeitete Lohn fliesst ist 
 ganz einfach. Man stellt sich die Fragen:
 > *Wohin geht denn mein ganzes Geld?*
 
-`AppName` soll dieses Problem lösen, indem man seine Ausgaben und das monatliche 
+`BudgetPlaner` soll dieses Problem lösen, indem man seine Ausgaben und das monatliche 
 Budget bequem im Tool eingeben kann. Somit sieht man sofort, für was man wie viel 
 Ausgegeben hat und entsprechend auch, ob man sich nun zurückhalten muss, 
 oder noch genügen freie Mittel hat. 

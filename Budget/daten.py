@@ -212,7 +212,6 @@ def monat_wechlser():
         json_als_string = open_file.read()
         aus = json.loads(json_als_string)
 
-    # print(aus)
     month = []
 
     for key, value in aus.items():

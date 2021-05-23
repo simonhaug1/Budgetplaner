@@ -12,14 +12,7 @@ font-size: 1.75rem;
 font-size: 1.25rem;
 padding-left: 15px;
 }
-/*https://color.adobe.com/de/explore?page=2
 
-/* Color Theme Swatches in Hex */
-/*.Farbdesign-6-1-hex { color: #012E40; }
-.Farbdesign-6-2-hex { color: #027367; }
-.Farbdesign-6-3-hex { color: #F2B66D; }
-.Farbdesign-6-4-hex { color: #F29057; }
-.Farbdesign-6-5-hex { color: #732D2D; }*/
 
 
 body * {
@@ -48,11 +41,14 @@ h2 {font-size: 3rem;
     text-align: center;
 }
 #titel h2 {
-    color: #F29057;
+    color: #ff7f0e;
 }
 
 h3 {
     font-size: 2rem;
+}
+h5 {
+text-align: center;
 }
 
 .inline {
@@ -95,6 +91,9 @@ footer i.bi {line-height: 1.8;}
 hr {margin: 50px 0;}
 
 
+.btn-primary {background-color: #1f77b4; border: none; }
+.btn-primary:hover {background-color: #1f77b4; opacity: 0.8;}
+
 /****************************************************************
 ***************************************************************/
 /*Startseite*/
@@ -127,7 +126,7 @@ margin-bottom: 30px;
 }
 
 .progress-bar {
-background-color: #F29057;
+background-color: #ff7f0e;
 }
 
 .monatsauswahl {display: flex;}
@@ -170,7 +169,7 @@ background-color: #F29057;
     flex-wrap: wrap;
 }
 
-.add_ausgabe form > *,  .kategorien_buttons * {
+.add_ausgabe form > *,  .kategorien_buttons *, form:not(.monatsauswahl) .form-control {
     margin: 10px 20px 10px 0px;
 }
 
@@ -189,7 +188,7 @@ background-color: #F29057;
 ***************************************************************/
 /*buttons*/
 .trash {border:none; background: transparent;}
-
+.budgethinzu {margin-bottom: 30px;}
 /****************************************************************
 ***************************************************************/
 /*Plotly Visualisierungen*/
