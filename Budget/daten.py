@@ -48,7 +48,7 @@ def umwandlung_budget():
             budget_dict = json.loads(json_als_dict)
             return budget_dict
     except FileNotFoundError:
-        budget_dict = {"Keine Daten vorhanden": ""}
+        budget_dict = {}
         return budget_dict
 
 
@@ -63,7 +63,7 @@ def umwandlung_ausgaben():
 
         return ausgaben_dict
     except FileNotFoundError:
-        ausgaben_dict = {" ": "Keine Daten vorhanden"}
+        ausgaben_dict = {}
         return ausgaben_dict
 
 
@@ -187,7 +187,7 @@ def summe_n_budget():
 
         return budget_zahlen
     except FileNotFoundError:
-        budget_zahlen = {"Keine Daten vorhanden": [1, 0]}
+        budget_zahlen = {}
         return budget_zahlen
 
 
@@ -208,26 +208,35 @@ def datum_anzeigen():
 
 # Monatsauswahl auf Startseite
 def monat_wechlser():
-    with open('ausgabe.json') as open_file:
-        json_als_string = open_file.read()
-        aus = json.loads(json_als_string)
+    try:
+        with open('ausgabe.json') as open_file:
+            json_als_string = open_file.read()
+            aus = json.loads(json_als_string)
 
-    month = []
+        month = []
 
-    for key, value in aus.items():
-        reuseday = dt.datetime.strptime(value[2], '%Y-%m-%d')
-        singlemonth = reuseday.strftime('%B %Y')
-        if singlemonth not in month:
-            month.append(singlemonth)
-    month.sort(key=lambda date: datetime.strptime(date, "%B %Y")) #sortiert mir die Monate nach Datum
-    return month
+        for key, value in aus.items():
+            reuseday = dt.datetime.strptime(value[2], '%Y-%m-%d')
+            singlemonth = reuseday.strftime('%B %Y')
+            if singlemonth not in month:
+                month.append(singlemonth)
+        month.sort(key=lambda date: datetime.strptime(date, "%B %Y")) #sortiert mir die Monate nach Datum
+        return month
+
+    except (FileNotFoundError, TypeError):
+        month = []
+        return month
 
 # Gewählter Monat ausgeben
 def monat_auswahl():
-    if request.method == 'POST':
-        month_name = request.form['select_month']
+    try:
+        if request.method == 'POST':
+            month_name = request.form['select_month']
 
-        return month_name
+            return month_name
+    except TypeError:
+        pass
+
 
 # Budget nach Index löschen
 def butget_loeschen(n):

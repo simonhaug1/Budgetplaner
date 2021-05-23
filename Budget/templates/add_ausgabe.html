@@ -12,8 +12,14 @@
                 <div class="btn-group kategorien_buttons" role="group" aria-label="Basic radio toggle button group">
                     {% for key, value in budget_dict.items() %}
 
-                        <input type="radio" class="btn-check" value="{{ key }}" name="ausgabe_kategorie" id="{{ key }}" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="{{ key }}">{{ key }}</label>
+                        {% if key == "Andere" %}
+                            <input type="radio" checked class="btn-check" value="{{ key }}" name="ausgabe_kategorie" id="{{ key }}" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="{{ key }}">{{ key }}</label>
+                        {% else %}
+                            <input type="radio" class="btn-check" value="{{ key }}" name="ausgabe_kategorie" id="{{ key }}" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="{{ key }}">{{ key }}</label>
+                        {% endif %}
+
 
                     {% endfor %}
                 </div>

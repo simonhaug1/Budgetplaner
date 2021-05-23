@@ -22,9 +22,13 @@
        <td> {{ key }} </td>
        <td> {{ value }} </td>
         <td class="last">
-            <form action="/delete-budget/" method="post">
-                <button class="trash" name="delete-budget-button" type="submit" value="{{loop.index}}"><i class="bi bi-trash"></i></button>
-            </form>
+
+            {% if key != "Andere" %}
+                <form action="/delete-budget/" method="post">
+                    <button class="trash" name="delete-budget-button" type="submit" value="{{loop.index}}"><i class="bi bi-trash"></i></button>
+                </form>
+            {% endif %}
+
         </td>
     </tr>
 
