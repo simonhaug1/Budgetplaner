@@ -9,8 +9,8 @@
   </head>
 
     {% block content %}{% endblock %}
-
-        <a title="Ausgabe hinzufügen" href="{{ url_for('ausgabe_hinzufügen') }}"><div class="add_ausgabe_button"><i class="bi bi-plus-circle"></i></div></a>
+        <a title="Budget hinzufügen" href="{{ url_for('budget_hinzufügen') }}"><div class="add_budget_button add_button" ><i class="bi bi-sliders"></i></div></a>
+        <a title="Ausgabe hinzufügen" href="{{ url_for('ausgabe_hinzufügen') }}"><div class="add_ausgabe_button add_button" ><i class="bi bi-plus"></i></div></a>
       <footer>
             <div><a title="Ausgaben" href="{{ url_for('ausgaben_auflisten') }}"><i class="bi bi-clock-history"></i></a></div>
 

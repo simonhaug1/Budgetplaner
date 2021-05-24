@@ -139,16 +139,41 @@ background-color: #ff7f0e;
 
 
 /*Add Ausgabe Button*/
-.add_ausgabe_button {
+.add_button {
     position: fixed;
-    bottom: 80px;
     right: 30px;
     width: 75px;
     height: 75px;
     line-height: 0.33;
     font-weight: 500
 }
-.add_ausgabe_button i {font-size: 4rem;}
+.add_button .bi:before {
+    border: 3.5px solid black;
+    border-radius: 50px;
+ }
+
+.add_ausgabe_button {
+    bottom: 80px;
+}
+
+
+.add_budget_button {
+    bottom: 160px;
+}
+
+.add_ausgabe_button i, .add_budget_button i {font-size: 4rem;}
+
+.add_budget_button i:before {
+    padding: 0.75rem;
+    font-size: 2.5rem;
+}
+
+.add_button:hover i:before {
+    color: #ff7f0e;
+    border-color: #ff7f0e;
+}
+
+
 
 /*Radio Button Color Change*/
 
@@ -188,9 +213,8 @@ background-color: #ff7f0e;
 ***************************************************************/
 /*buttons*/
 .trash {border:none; background: transparent;}
-.budgethinzu {margin-bottom: 30px;}
+
 /****************************************************************
 ***************************************************************/
 /*Plotly Visualisierungen*/
 
-.
