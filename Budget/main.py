@@ -13,7 +13,7 @@ Erstellt mir die Startseite "Dashboard", wo ich die Übersicht über meine Ausga
 """
 @app.route("/", methods=['GET', 'POST'])
 def index():
-
+    daten.standardbudget()
     return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen(), budget_zahlen=daten.summe_n_budget(), summe_b=daten.budget_zusammenzaehlen(), kat=daten.summe_n_budget(), datum=daten.datum_anzeigen(), month=daten.monat_wechlser(), monat_auswahl=daten.monat_auswahl(), div_pie=viz.pie_chart_ausgaben())
 
 

@@ -281,4 +281,10 @@ def ausgabe_loeschen(n):
     except (IndexError, RuntimeError):
         pass
 
-# Plotly Visualisierungen
+def standardbudget():
+    try:
+        with open("budget.json") as open_file:
+            pass
+    except FileNotFoundError:
+        datei_name = "budget.json"
+        speichern(datei_name, "Andere", 0)
