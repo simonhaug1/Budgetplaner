@@ -38,7 +38,7 @@ def barchart_ausgaben():
             zeilen.append(j)
 
         df = pd.DataFrame(zeilen, columns=spalten )
-        df.Betrag = df.Betrag.astype("int")
+        df.Betrag = df.Betrag.astype("float")
 
         fig = px.bar(df, x="Zeitpunkt", y="Betrag", color="Kategorie",  hover_name="Bezeichnung", template="presentation")
         div_bar_ausgabe = plot(fig, output_type="div")
@@ -66,7 +66,7 @@ def barchart_budget():
 
         print(df)
 
-        df.Betrag = df.Betrag.astype("int")
+        df.Betrag = df.Betrag.astype("float")
 
         fig = px.bar(df, x="Kategorie", y="Betrag", color="Kategorie", hover_name="Betrag", template="presentation")
         div_bar_budget = plot(fig, output_type="div")

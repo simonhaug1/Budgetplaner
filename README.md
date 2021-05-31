@@ -22,6 +22,7 @@ Um `AppName`  starten zu können muss folgendes installiert werden:
 - `Flask`
 - `Jinja2`
 - `Plotly`
+- `Pandas`
 
 
 Das Tool kann danach von jedem Gerät aus dem Netzwerk über die IP Adresse und Port 5000 aufgerufen werden. 
@@ -60,16 +61,16 @@ Man kan nun entweder eine Ausgabe hinzufügen (ohne Budget) oder  zuerst seine B
 Dazu wählt man im Menüband unten das Symbol `Budget` aus. Man wird auf die Budgetseite weitergeleitet und 
 hat nun die Möglichkeit `Budgetkategorie hinzufügen` anzuwählen. Es öffnet sich ein Eingabeformular wo man 
 die Bezeichnung und den Betrag angeben kann.
-![Budget](Budget/doku/budgetuebersicht.PNG)
+![Budget](Budget/doku/budget.jpg)
 
 ### Ausgabe hinzufügen
 Eine neue Ausgabe kann von jeder Unterseite durch das Plussymbol im unteren rechten Bildschirmrand erfassen.
 Es öffnet sich ein Eingabeformular wo man den Betrag, die vorher erfasste Budgetkategorie, das Datum sowie die Bezeichnung angeben kann.
-![ausgabe](Budget/doku/ausgaben.png)
+![ausgabe](Budget/doku/ausgaben.jpg)
 ### Übersicht über die Ausgaben verschaffen
 Auf der Startseite befindet sich das Dashboard, wo man sich einen Überblick über alle in diesem Monat 
 getätigten Ausgaben machen kann. Durch Auswahl des gewünschten Monats kann die Ansicht verändert werden (Standardmässig wird der aktuelle Monat angezeigt). 
-![dashboard](Budget/doku/dashboard.png)
+![dashboard](Budget/doku/dashboard.jpg)
 
 ### Ausgabe oder Budget löschen
 Hat man eine Ausgabe oder eine Budgetkategorie falsch erfasst, oder möchte die 
