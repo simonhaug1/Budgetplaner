@@ -3,7 +3,7 @@ from datetime import date
 import json
 import datetime as dt
 from flask import request
-
+import os
 
 # Allgemeine Speichern Funktion
 def speichern(datei, key, value):
@@ -288,3 +288,13 @@ def standardbudget():
     except FileNotFoundError:
         datei_name = "budget.json"
         speichern(datei_name, "Andere", 0)
+
+"""Diese Funktion brauch ich, da sie prüft ob die json-Datei 
+Ausgaben leer ist und löscht sie (falls ja gibt es anzeigeprobleme)"""
+
+def json_pruefer():
+    try:
+        if os.stat("ausgabe.json").st_size == 2:
+            os.remove("ausgabe.json")
+    except FileNotFoundError:
+        pass

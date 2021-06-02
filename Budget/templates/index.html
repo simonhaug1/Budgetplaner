@@ -11,10 +11,10 @@
                   <div class="form-group">
 
                       <form class="monatsauswahl" method="POST">
-                        <select class="form-control" id="choose_month" name="select_month">
-                            <option>Wähle einen Monat</option>
+                        <select class="form-control" id="choose_month" name="select_month" required="required">
+                            <option value="">Wähle einen Monat</option>
                             {% for i in month %}
-                            <option>{{i}}</option>
+                            <option value="{{i}}">{{i}}</option>
                         {% endfor %}
                     </select>
                           <button class="btn btn-primary" type="submit">Speichern</button>

@@ -6,7 +6,7 @@
             <form class="container col-sm-6" method="POST">
 
                 <!--Betrag-->
-                <input class="form-control" type="number" step=".01" name="ausgabe_number" placeholder="Betrag" min="0">
+                <input class="form-control" type="number" step=".01" name="ausgabe_number" placeholder="Betrag" min="0" required="required">
 
                 <!--Kategorie-->
                 <div class="btn-group kategorien_buttons" role="group" aria-label="Basic radio toggle button group">
@@ -25,10 +25,10 @@
                 </div>
 
                 <!--Datum-->
-                <input class="form-control" name="ausgabe_date" type="date" value="" id="date-input">
+                <input class="form-control" name="ausgabe_date" type="date" value="" id="date-input" required="required">
 
                 <!--Name-->
-                <input type="text" class="form-control" name="ausgabe_name" placeholder="Bezeichnung">
+                <input type="text" class="form-control" name="ausgabe_name" placeholder="Bezeichnung" required="required">
 
                 <!--Senden-->
                 <div class="ausgabe_speichern"><button type="submit" class="btn btn-primary">Speichern</button></div>

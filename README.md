@@ -57,10 +57,11 @@ Der Nutzer hat die möglichkeit eine neue Budget-Kateogire hinzuzufügen oder zu
 Ausserdem kann er im Dashboard die Ausgaben je Monat anzeigen lassen. Wie das genau funktioneirt, wird nachfolgende beschrieben.
 ### Budget hinzufügen
 Wenn man nach der Installation das erste mal auf die Seite geht (Startseite), sind noch keine Daten vorhanden, das Dashboard zeigt in diesem Fall keine Daten an.
-Man kan nun entweder eine Ausgabe hinzufügen (ohne Budget) oder  zuerst seine Budget-Kategorien hinzufügen.
+Man kan nun entweder eine Ausgabe hinzufügen (wenn keine Eigene Budgetkategorie erfasst wurde ist es standardmässig "Andere") oder  zuerst seine Budget-Kategorien hinzufügen.
 Dazu wählt man im Menüband unten das Symbol `Budget` aus. Man wird auf die Budgetseite weitergeleitet und 
 hat nun die Möglichkeit `Budgetkategorie hinzufügen` anzuwählen. Es öffnet sich ein Eingabeformular wo man 
 die Bezeichnung und den Betrag angeben kann.
+Beachte, dass wenn man zwei mal den gleichen Namen hinzufügt, es nicht zwei Einträge gibt, sondern dass es dann den ersten Eintrag überschreibt. 
 ![Budget](Budget/doku/budget.jpg)
 
 ### Ausgabe hinzufügen

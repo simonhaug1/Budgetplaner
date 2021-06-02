@@ -72,7 +72,7 @@ def delete_ausgabe():
 # Erstellt mir die Unterseite "Ausgaben", wo ich eine Auflistung aller meiner erfassten Ausgaben habe
 @app.route("/ausgaben/")
 def ausgaben_auflisten():
-
+    daten.json_pruefer()
     return render_template("ausgaben.html", ausgaben_dict=daten.umwandlung_ausgaben(), div_bar_ausgabe=viz.barchart_ausgaben())
 
 
