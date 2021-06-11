@@ -5,7 +5,9 @@ import datetime as dt
 from flask import request
 import os
 
-# Allgemeine Speichern Funktion
+"""
+Diese Funktion dient mir als "allgemeine" Speichern Finktion und verwende sie beim Speichern des Budgets und der Ausgaben nachfolgend dann wieder
+"""
 def speichern(datei, key, value):
     try:
         with open(datei) as open_file:
@@ -18,7 +20,9 @@ def speichern(datei, key, value):
     with open(datei, "w") as open_file:
         json.dump(datei_inhalt, open_file)
 
-# Funktion zum Speichern meiner Ausgaben
+"""
+Funktion zum Speichern meiner Ausgaben
+"""
 def speichern_m_Variables(datei, key, value1, value2, value3, value4):
     try:
         with open(datei) as open_file:
@@ -32,7 +36,9 @@ def speichern_m_Variables(datei, key, value1, value2, value3, value4):
     with open(datei, "w") as open_file:
         json.dump(datei_inhalt, open_file)
 
-# Funktion die die Ausgabe ins json schreibt
+"""
+Diese Funktion schreibt mir die die Ausgaben ins json 
+"""
 def ausgabe_speichern(ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name):
     datei_name = "ausgabe.json"
     zeitpunkt = datetime.now()
@@ -40,7 +46,9 @@ def ausgabe_speichern(ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_n
     return zeitpunkt, ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name
 
 
-# Funktion zum Umwandeln der erfassten Budgetkatogrien aus der json-Datei in ein dict.
+"""
+Funktion zum Umwandeln der erfassten Budgetkatogrien aus der json-Datei in ein dict.
+"""
 def umwandlung_budget():
     try:
         with open("budget.json") as open_file:
@@ -51,8 +59,9 @@ def umwandlung_budget():
         budget_dict = {}
         return budget_dict
 
-
-# Funktion zum Umwandeln der erfassten Ausgaben aus der json-Datei in ein dict, inkl. Sortierung nach Datum
+"""
+Funktion zum Umwandeln der erfassten Ausgaben aus der json-Datei in ein dict, inkl. Sortierung nach Datum
+"""
 def umwandlung_ausgaben():
     try:
         with open("ausgabe.json") as open_file:
@@ -67,14 +76,18 @@ def umwandlung_ausgaben():
         return ausgaben_dict
 
 
-# Allgemeine Funktion zum speichern
+"""
+Diese Funktion speichert mit das Budget ab, dazu verwende ich die bereits oben verwendete Funktion speichern()
+"""
 def budget_speichern(budget_name, budget_number):
     datei_name = "budget.json"
     speichern(datei_name, budget_name, budget_number)
     return budget_name, budget_number
 
 
-# Funktion die mir die Summe aller eingegeben Ausgaben vom aktuellen Monat ausgibt
+"""
+Diese Funktion gibt mir die Summe aller eingegebenen Ausgaben vom aktuellen Monat aus
+"""
 def ausgaben_zusammenzaehlen():
     try:
         with open('ausgabe.json') as open_file:
@@ -85,7 +98,6 @@ def ausgaben_zusammenzaehlen():
             summe = 0
             today = date.today()
 
-
             # Gibt mir für die Augsbe der Gesamtsumme des gewünschten Monats aus, falls keiner ausgewählt ist, wird der aktuelle Monat ausgewählt
             try:
                 m_2 = monat_auswahl()
@@ -94,10 +106,7 @@ def ausgaben_zusammenzaehlen():
                 m_2 = today.strftime('%B %Y')
                 m_2_format = dt.datetime.strptime(m_2, '%B %Y')
 
-
             datum = m_2_format.strftime('%Y-%m')
-
-
 
             for i, j in mein_dict.items():
                 date_time_ausgabe = j[2].rsplit("-", 1)[0]
@@ -113,7 +122,9 @@ def ausgaben_zusammenzaehlen():
         return summe
 
 
-# Funktion die mir die Summe aller selbst definierten Budgets ausgibt
+"""
+Funktion die mir die Summe aller selbst definierten Budgets ausgibt
+"""
 def budget_zusammenzaehlen():
     try:
         with open('budget.json') as open_file:
@@ -131,8 +142,10 @@ def budget_zusammenzaehlen():
         summe_b = 1
         return summe_b
 
-
-# Funktion die mir die Summe der eingetragenen Ausgaben, sortiert nach Budgetkategorien ausgibt
+"""
+Damit ich im Dashboard auch eine Übersicht erhalte wie viel im pro Budgetkategorie insgesamt ausgegebn habe, 
+muss ich diese aus diese aus den json-Dateien auslesen und aufsummieren, sowie in relation zur Budgetkategorie stellen
+"""
 def summe_n_budget():
     try:
         with open('ausgabe.json') as open_file:
@@ -158,9 +171,6 @@ def summe_n_budget():
             m_2_format = dt.datetime.strptime(m_2, '%B %Y')
 
         datum = m_2_format.strftime('%Y-%m')
-
-
-
 
         for kategorie in bud:
             ausgabe_p_kategorie = 0
@@ -190,8 +200,9 @@ def summe_n_budget():
         budget_zahlen = {}
         return budget_zahlen
 
-
-# Funktion um aktuelles Datum (Monat) auszugeben
+"""
+Unter dem Namen "Dashboard" habe ich eine Monatsanzeige, welche mir immer den aktuellen Monat ausgibt
+"""
 def datum_anzeigen():
     today = date.today()
 
@@ -206,7 +217,11 @@ def datum_anzeigen():
     return datum
 
 
-# Monatsauswahl auf Startseite
+"""
+Diese Funktion hab ich erstellt, damit man auf der Startseite einen gewünschten Monat auswählen kann. 
+Sie zeigt mir die Monate an (als Dropdown), welche ich meinem ausgaben.json vorhanden sind. Die nächste Funktion
+monat_auswahl() brauche ich, damit ich den gewählten Monat auch anzeigen lassen kann.
+"""
 def monat_wechlser():
     try:
         with open('ausgabe.json') as open_file:
@@ -227,7 +242,7 @@ def monat_wechlser():
         month = []
         return month
 
-# Gewählter Monat ausgeben
+
 def monat_auswahl():
     try:
         if request.method == 'POST':
@@ -238,7 +253,10 @@ def monat_auswahl():
         pass
 
 
-# Budget nach Index löschen
+"""
+Damit ich Budget auch wieder löschen kann, habe ich folgende Funktion erstellt, welche die Ausgabe nach dem Index in der Tabelle löscht.
+Den Index lese ich im entsprechenden html-file aus
+"""
 def butget_loeschen(n):
     with open("budget.json") as open_file:
         json_als_dict = open_file.read()
@@ -258,7 +276,10 @@ def butget_loeschen(n):
     except (IndexError, RuntimeError):
         pass
 
-
+"""
+Damit ich Ausgaben auch wieder löschen kann, habe ich folgende Funktion erstellt, welche die Ausgabe nach dem Index in der Tabelle löscht.
+Den Index lese ich im entsprechenden html-file aus
+"""
 # Ausgabe nach Index löschen
 def ausgabe_loeschen(n):
     with open("ausgabe.json") as open_file:
@@ -281,6 +302,11 @@ def ausgabe_loeschen(n):
     except (IndexError, RuntimeError):
         pass
 
+"""
+Die Funktion generiert mir das Standardbudget "Andere", sollte noch kein eigenes hinzugefügt worden sein,
+denn sonst entstehen Anzeigeprobleme
+"""
+
 def standardbudget():
     try:
         with open("budget.json") as open_file:
@@ -289,8 +315,10 @@ def standardbudget():
         datei_name = "budget.json"
         speichern(datei_name, "Andere", 0)
 
-"""Diese Funktion brauch ich, da sie prüft ob die json-Datei 
-Ausgaben leer ist und löscht sie (falls ja gibt es anzeigeprobleme)"""
+"""
+Diese Funktion prüft ob die ausgaben.json leer ist und löscht sie 
+Denn, wenn sie leer ist gibt es Anzeigeprobleme
+"""
 
 def json_pruefer():
     try:

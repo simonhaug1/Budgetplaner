@@ -8,9 +8,8 @@ import viz
 
 app = Flask("templates")
 
-""" 
-Erstellt mir die Startseite "Dashboard", wo ich die Übersicht über meine Ausgaben erhalten
-"""
+
+# Erstellt mir die Startseite "Dashboard", wo ich die Übersicht über meine Ausgaben erhalten
 @app.route("/", methods=['GET', 'POST'])
 def index():
     daten.standardbudget()
