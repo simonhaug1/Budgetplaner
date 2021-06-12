@@ -6,7 +6,8 @@ from flask import request
 import os
 
 """
-Diese Funktion dient mir als "allgemeine" Speichern Finktion und verwende sie beim Speichern des Budgets und der Ausgaben nachfolgend dann wieder
+Diese Funktion dient mir als "allgemeine" Speichern Funktion.
+Sie wird beim Speichern der Budget-Kategorien verwendet
 """
 def speichern(datei, key, value):
     try:
@@ -21,7 +22,8 @@ def speichern(datei, key, value):
         json.dump(datei_inhalt, open_file)
 
 """
-Funktion zum Speichern meiner Ausgaben
+Diese Funktion dient mir als ausgeweitete "allgemeine" Speichern Funktion.
+Sie wird beim Speichern der Ausgaben (wenn mehrere Values vorhanden sind) verwendet
 """
 def speichern_m_Variables(datei, key, value1, value2, value3, value4):
     try:
@@ -37,7 +39,7 @@ def speichern_m_Variables(datei, key, value1, value2, value3, value4):
         json.dump(datei_inhalt, open_file)
 
 """
-Diese Funktion schreibt mir die die Ausgaben ins json 
+Diese Funktion schreibt mir die die Ausgaben mithilfe der "speichern_m_Variables" Funktion ins json-File "ausgabe.json"
 """
 def ausgabe_speichern(ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_name):
     datei_name = "ausgabe.json"
@@ -47,7 +49,7 @@ def ausgabe_speichern(ausgabe_number, ausgabe_kategorie, ausgabe_date, ausgabe_n
 
 
 """
-Funktion zum Umwandeln der erfassten Budgetkatogrien aus der json-Datei in ein dict.
+Funktion zum Umwandeln der erfassten Budget-Kategorien aus der json-Datei in ein dict.
 """
 def umwandlung_budget():
     try:
@@ -77,7 +79,7 @@ def umwandlung_ausgaben():
 
 
 """
-Diese Funktion speichert mit das Budget ab, dazu verwende ich die bereits oben verwendete Funktion speichern()
+Diese Funktion schreibt mir die die Budget-Kategorien mithilfe der "speichern" Funktion ins json-File "budget.json"
 """
 def budget_speichern(budget_name, budget_number):
     datei_name = "budget.json"
@@ -86,7 +88,8 @@ def budget_speichern(budget_name, budget_number):
 
 
 """
-Diese Funktion gibt mir die Summe aller eingegebenen Ausgaben vom aktuellen Monat aus
+Diese Funktion gibt mir die Summe aller eingegebenen Ausgaben vom aktuellen Monat aus.
+Die Summe wird dann im Dashboard angezeigt
 """
 def ausgaben_zusammenzaehlen():
     try:
@@ -123,7 +126,7 @@ def ausgaben_zusammenzaehlen():
 
 
 """
-Funktion die mir die Summe aller selbst definierten Budgets ausgibt
+Funktion, die mir die Summe aller definierten Budget-Kategorien ausgibt
 """
 def budget_zusammenzaehlen():
     try:
@@ -143,8 +146,8 @@ def budget_zusammenzaehlen():
         return summe_b
 
 """
-Damit ich im Dashboard auch eine Übersicht erhalte wie viel im pro Budgetkategorie insgesamt ausgegebn habe, 
-muss ich diese aus diese aus den json-Dateien auslesen und aufsummieren, sowie in relation zur Budgetkategorie stellen
+Damit ich im Dashboard eine Übersicht erhalte, wie viel pro Budget-Kategorie ausgegeben wurde, 
+müssen die Ausgaben nach Budget-Kategorien aufgesplittet aus der json-Datei ausgelesen und summiert werden.
 """
 def summe_n_budget():
     try:
@@ -201,7 +204,7 @@ def summe_n_budget():
         return budget_zahlen
 
 """
-Unter dem Namen "Dashboard" habe ich eine Monatsanzeige, welche mir immer den aktuellen Monat ausgibt
+Auf der Startseite unterhalb des Namens "Dashboard" befindet sich eine Monatsanzeige, die den aktuellen Monat ausgibt
 """
 def datum_anzeigen():
     today = date.today()
@@ -218,9 +221,8 @@ def datum_anzeigen():
 
 
 """
-Diese Funktion hab ich erstellt, damit man auf der Startseite einen gewünschten Monat auswählen kann. 
-Sie zeigt mir die Monate an (als Dropdown), welche ich meinem ausgaben.json vorhanden sind. Die nächste Funktion
-monat_auswahl() brauche ich, damit ich den gewählten Monat auch anzeigen lassen kann.
+Dank dieser Funktion kann man auf der Startseite mit einem Dropdown aus einer Liste aller Monate, welche im 
+"ausgabe.json" vorhanden sind, den gewünschten Monat auswählen
 """
 def monat_wechlser():
     try:
@@ -242,7 +244,10 @@ def monat_wechlser():
         month = []
         return month
 
-
+"""
+Mit dieser Funktion lässt sich der im Dropdown ausgewählte Monat speichern, damit auf dem Dashboard nur noch die Daten
+bezogen auf diesen Monat angezeigt werden
+"""
 def monat_auswahl():
     try:
         if request.method == 'POST':
@@ -254,8 +259,8 @@ def monat_auswahl():
 
 
 """
-Damit ich Budget auch wieder löschen kann, habe ich folgende Funktion erstellt, welche die Ausgabe nach dem Index in der Tabelle löscht.
-Den Index lese ich im entsprechenden html-file aus
+Mit dieser Funktion lassen sich Budget-Kategorien nach Index löschen. 
+Der Index wird im HTML mit Jinja2 ausgelesen (budget.html, {{loop.index}})
 """
 def butget_loeschen(n):
     with open("budget.json") as open_file:
@@ -277,8 +282,8 @@ def butget_loeschen(n):
         pass
 
 """
-Damit ich Ausgaben auch wieder löschen kann, habe ich folgende Funktion erstellt, welche die Ausgabe nach dem Index in der Tabelle löscht.
-Den Index lese ich im entsprechenden html-file aus
+Mit dieser Funktion lassen sich Ausgaben nach Index löschen. 
+Der Index wird im HTML mit Jinja2 ausgelesen (ausgaben.html, {{loop.index}})
 """
 # Ausgabe nach Index löschen
 def ausgabe_loeschen(n):
@@ -303,10 +308,11 @@ def ausgabe_loeschen(n):
         pass
 
 """
-Die Funktion generiert mir das Standardbudget "Andere", sollte noch kein eigenes hinzugefügt worden sein,
-denn sonst entstehen Anzeigeprobleme
+Die Funktion generiert mir die Fallback-Budget-Kategorie "Andere", damit keine Fehler entstehen, sollte eine Ausgabe
+ohne zugehörige Budget-Kategorie erstellt werden
+Diese ist als Standard-Budget-Kategorie ausgewählt, wenn eine neue Ausgabe hinzugefügt wird. Wird also nicht spezifisch
+eine Kategorie ausgewählt, wird die Ausgabe zu dieser Kategorie gespeichert
 """
-
 def standardbudget():
     try:
         with open("budget.json") as open_file:
@@ -316,10 +322,11 @@ def standardbudget():
         speichern(datei_name, "Andere", 0)
 
 """
-Diese Funktion prüft ob die ausgaben.json leer ist und löscht sie 
-Denn, wenn sie leer ist gibt es Anzeigeprobleme
+Diese Funktion prüft, ob die "ausgabe.json" Datei keine Daten beinhaltet. Falls ja, wird die Datei gelöscht. 
+Wenn alle Ausgaben gelöscht werden, beinhaltet die json-Datei weiterhin die Klammern "{}" des dict. 
+Das führt zu Anzeigeproblemen. Deshalb wird die Datei gelöscht, sollte sie nur noch diese Klammern behinhalten 
+(Falls nur noch zwei Zeichen in der Datei vorhanden sind).
 """
-
 def json_pruefer():
     try:
         if os.stat("ausgabe.json").st_size == 2:

@@ -1,49 +1,45 @@
 {% extends "layout.html" %}
 {% block content %}
 <body class="budget">
-<h1>BUDGET</h1>
+    <h1>BUDGET</h1>
 
-        <div id="Barchart_budget">
-            {{ div_bar_budget|safe }}
-        </div>
-<hr>
+    <div id="Barchart_budget">
+        {{ div_bar_budget|safe }}
+    </div>
+    <hr>
     <table class="table">
-              <tbody>
-    <tr>
-       <th> Kategorie </th>
-       <th> Budget </th>
-        <th></th>
-    </tr>
+        <tbody>
+            <tr>
+               <th> Kategorie </th>
+               <th> Budget </th>
+                <th></th>
+            </tr>
 
-    {% for key, value in budget_dict.items() %}
+            {% for key, value in budget_dict.items() %}
 
-    <tr>
-       <td> {{ key }} </td>
-       <td> {{ value }} </td>
-        <td class="last">
+            <tr>
+               <td> {{ key }} </td>
+               <td> {{ value }} </td>
+                <td class="last">
 
-            {% if key != "Andere" %}
-                <form action="/delete-budget/" method="post">
-                    <button class="trash" name="delete-budget-button" type="submit" value="{{loop.index}}"><i class="bi bi-trash"></i></button>
-                </form>
-            {% endif %}
+                    {% if key != "Andere" %}
+                        <form action="/delete-budget/" method="post">
+                            <button class="trash" name="delete-budget-button" type="submit" value="{{loop.index}}"><i class="bi bi-trash"></i></button>
+                        </form>
+                    {% endif %}
 
-        </td>
-    </tr>
+                </td>
+            </tr>
 
-    {% endfor %}
+            {% endfor %}
 
-    <tr>
-       <td> <strong>Gesamtbudget </strong></td>
-       <td> <strong>{{ summe_b }} </strong></td>
-        <td class="last">
-        </td>
-    </tr>
-              </tbody>
- </table>
-
-
-
-
-           </body>
+            <tr>
+               <td> <strong>Gesamtbudget </strong></td>
+               <td> <strong>{{ summe_b }} </strong></td>
+                <td class="last">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
 {% endblock %}

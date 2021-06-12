@@ -9,35 +9,35 @@
             {{ div_bar_ausgabe|safe }}
         </div>
         <hr>
-          <table class="table">
+        <table class="table">
               <tbody>
-    <tr>
-        <th> Datum </th>
-        <th> Bezeichnung </th>
-        <th> Betrag </th>
-        <th> Kategorie </th>
-        <th> </th>
-    </tr>
+                <tr>
+                    <th> Datum </th>
+                    <th> Bezeichnung </th>
+                    <th> Betrag </th>
+                    <th> Kategorie </th>
+                    <th> </th>
+                </tr>
 
-    {% for key, value in ausgaben_dict.items() %}
+                {% for key, value in ausgaben_dict.items() %}
 
-    <tr>
-        <td> {{ value[2] }} </td>
-        <td> {{ value[3] }} </td>
-        <td> {{ value[0] }} </td>
-        <td> {{ value[1] }} </td>
-        <td class="last">
-            <form action="/delete-ausgabe/" method="post">
-                <button class="trash" name="delete-ausgabe-button" type="submit" value="{{loop.index}}"><i class="bi bi-trash"></i></button>
-            </form>
-        </td>
+                <tr>
+                    <td> {{ value[2] }} </td>
+                    <td> {{ value[3] }} </td>
+                    <td> {{ value[0] }} </td>
+                    <td> {{ value[1] }} </td>
+                    <td class="last">
+                        <form action="/delete-ausgabe/" method="post">
+                            <button class="trash" name="delete-ausgabe-button" type="submit" value="{{loop.index}}"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </td>
 
-    </tr>
+                </tr>
 
-    {% endfor %}
+                {% endfor %}
               </tbody>
- </table>
+        </table>
 
 
-           </body>
+</body>
 {% endblock %}

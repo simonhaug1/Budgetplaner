@@ -9,14 +9,14 @@ import viz
 app = Flask("templates")
 
 
-# Erstellt mir die Startseite "Dashboard", wo ich die Übersicht über meine Ausgaben erhalten
+# Erstellt mir die Startseite "Dashboard", in dem ich die Übersicht über meine Ausgaben sehe
 @app.route("/", methods=['GET', 'POST'])
 def index():
     daten.standardbudget()
     return render_template("index.html",  summe=daten.ausgaben_zusammenzaehlen(), budget_zahlen=daten.summe_n_budget(), summe_b=daten.budget_zusammenzaehlen(), kat=daten.summe_n_budget(), datum=daten.datum_anzeigen(), month=daten.monat_wechlser(), monat_auswahl=daten.monat_auswahl(), div_pie=viz.pie_chart_ausgaben())
 
 
-# Erstellt mir die Unterseite "Ausgabe hinzufügen", wo ich neue Ausgaben erfassen kann
+# Erstellt mir die Unterseite "Ausgabe hinzufügen", in der ich neue Ausgaben erfassen kann
 @app.route("/add-ausgabe/", methods=['GET', 'POST'])
 def ausgabe_hinzufügen(zeitpunkt=None):#Was macht ZEitpunkt=None??????
     if request.method == 'POST':
@@ -31,7 +31,7 @@ def ausgabe_hinzufügen(zeitpunkt=None):#Was macht ZEitpunkt=None??????
     return render_template("add_ausgabe.html", budget_dict=daten.umwandlung_budget())
 
 
-# Erstellt mir die Unterseite "Budget hinzufügen", wo ich neue Budgetkategorien hinzufügen kann
+# Erstellt mir die Unterseite "Budget hinzufügen", in der ich neue Budget-Kategorien hinzufügen kann
 @app.route("/add-budget/", methods=['GET', 'POST'])
 def budget_hinzufügen():
     if request.method == 'POST':
@@ -44,13 +44,13 @@ def budget_hinzufügen():
     return render_template("add_budget.html")
 
 
-# Erstellt mir die Unterseite "Budget", wo ich eine Auflistung aller meiner erfassten Budgetkategorie habe
+# Erstellt mir die Unterseite "Budget", in der ich eine Auflistung all meiner erfassten Budget-Kategorie sehe
 @app.route("/budget/")
 def auflisten():
     return render_template("budget.html", budget_dict=daten.umwandlung_budget(), summe_b=daten.budget_zusammenzaehlen(), div_bar_budget=viz.barchart_budget())
 
 
-#Löschen einer Budgetskategorie
+#Löschen einer Budget-Kategorie
 @app.route("/delete-budget/", methods=['POST'])
 def delete_budget():
     if request.method == 'POST':
@@ -68,7 +68,7 @@ def delete_ausgabe():
     return render_template('delete-ausgabe.html', ausgabe_name=daten.ausgabe_loeschen(index))
 
 
-# Erstellt mir die Unterseite "Ausgaben", wo ich eine Auflistung aller meiner erfassten Ausgaben habe
+# Erstellt mir die Unterseite "Ausgaben", in der ich eine Auflistung all meiner erfassten Ausgaben sehe
 @app.route("/ausgaben/")
 def ausgaben_auflisten():
     daten.json_pruefer()
