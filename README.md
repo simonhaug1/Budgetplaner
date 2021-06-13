@@ -26,14 +26,15 @@ im Netzwerk über die IP-Adresse und den Port 5000 aufgerufen werden.
 ***
 ## Workflow
 ![Workflow](Budget/doku/diagram.png)
+
 *Anmerkung: Zuerst sollte die Budgets hinzugefügt werden, danach die Ausgaben. Prinzipiell ist es jedoch auch 
-möglich zuerst eine Ausgabe hinzuzufügen,entspricht jedoch nicht der Logik vom Budgetplaner*
+möglich zuerst eine Ausgabe hinzuzufügen, entspricht jedoch nicht der Logik vom BudgetPlaner. Ist keine Budget-Kategorie vorhanden wird standardmässig die Kategorie "Andre" erstellt.*
 
 
 ### Dateneingabe
 Es sind für die Eingabe der Ausgaben und für die Festlegung der Budget-Kategorien 
 Dateneingaben durch den Nutzer notwendig.
-Die Eingabe erfolgt über ein Formular. Der Inhalt wird in ein json-File gespeichert.
+Die Eingabe erfolgt über ein entsprechendes Formular. Der Inhalt wird in ein json-File gespeichert.
 
 ### Datenverarbeitung/Speicherung
 Die Daten werden in json-Dateien gespeichert. Dabei wird zwischen zwei Dateien unterschieden. 
@@ -57,7 +58,7 @@ Das File `ausgabe.json` enthält folgende Informationen:
 Die eingegebenen Ausgaben bzw. Budget-Kategorien werden direkt 
 nach dem Erfassen in der jeweiligen Registerkarte als Tabelle angezeigt 
 (Tabelle für Ausgaben und Budget auf den Seiten `/ausgaben/` und `/budget/`). 
-Zusätzlich fliessen diese Daten in die insgesamt 4 Diagramme ein (3 Plotly Diagramme und 1 HTML-Diagramm). 
+Zusätzlich fliessen diese Daten in die insgesamt 5 Diagramme ein (3 Plotly Diagramme und 2 HTML-Diagramme). 
 Nachfolgend als Beispiel die Tabelle der Ausgaben.
 ![Budget](Budget/doku/tabelle_ausgabe.jpg)
 ***
@@ -67,7 +68,7 @@ Auf der Startseite befindet sich das Dashboard. Hier kann man sich einen Überbl
 getätigten Ausgaben machen. 
 Durch Auswahl des gewünschten Monats (es stehen alle Monate zur Auswahl, in denen eine Ausgabe getätigt wurde)
 kann die Ansicht verändert werden. Standardmässig wird der aktuelle Monat angezeigt.
-Folgende Funktionalitäten stehen zur Verfügung:
+Folgende weitere Funktionalitäten stehen zur Verfügung:
 
 ![Workflow](Budget/doku/dashboard_uebersicht.jpg)
 
@@ -77,7 +78,7 @@ Folgende Funktionalitäten stehen zur Verfügung:
 4. Die Gesamtausgaben (über den gesamten Zeitraum) pro Budget-Kategorie 
 5. Hier kann man ein neues Budget erfassen
 6. Hier kann man eine neue Ausgabe erfassen
-7. Menüband, wo man die Registerkarten `/ausgaben/`, Dashboard, `/budget/` anwählen kann.
+7. Menüband, wo man die Seiten `/ausgaben/`, Dashboard, `/budget/` anwählen kann.
 8. Hier wird der aktuelle Monat angezeigt
 
 Das Kreisdiagramm `Gesamtübersicht` zeigt, wie viel Prozent die einzelnen Kategorien an den 
