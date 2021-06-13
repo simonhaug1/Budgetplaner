@@ -18,7 +18,7 @@ def index():
 
 # Erstellt mir die Unterseite "Ausgabe hinzufügen", in der ich neue Ausgaben erfassen kann
 @app.route("/add-ausgabe/", methods=['GET', 'POST'])
-def ausgabe_hinzufügen(zeitpunkt=None):#Was macht ZEitpunkt=None??????
+def ausgabe_hinzufügen(zeitpunkt=None):
     if request.method == 'POST':
         ausgabe_name = request.form['ausgabe_name']
         ausgabe_number = request.form['ausgabe_number']

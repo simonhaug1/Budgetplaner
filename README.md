@@ -7,12 +7,12 @@ ganz einfach. Man stellt sich die Frage:
 Budget bequem im Tool eingeben kann. Somit sieht man sofort, für was man wie viel 
 Geld ausgegeben hat und entsprechend auch, ob man sich nun bei weiteren Ausgaben zurückhalten muss 
 oder noch genügend freie Mittel hat. 
-
+***
 ## Projektidee
 Das Tool soll eine Übersicht über die bereits getätigten Ausgaben inkl. Status des 
 jeweiligen Budgets beinhalten. Die Budgets sollen selber hinzugefügt und wieder gelöscht werden können.
 Das Hinzufügen (und bei Bedarf auch das Löschen) der Ausgaben soll einfach und schnell erfolgen können.
-
+***
 ## Installation
 Um `BudgetPlaner` starten zu können, muss folgendes installiert werden:
 - `Python 3.9`
@@ -23,9 +23,12 @@ Um `BudgetPlaner` starten zu können, muss folgendes installiert werden:
 
 Das gestartete Tool kann danach von jedem Gerät (mit den nötigen Installationen) 
 im Netzwerk über die IP-Adresse und den Port 5000 aufgerufen werden. 
-
+***
 ## Workflow
 ![Workflow](Budget/doku/diagram.png)
+*Anmerkung: Zuerst sollte die Budgets hinzugefügt werden, danach die Ausgaben. Prinzipiell ist es jedoch auch 
+möglich zuerst eine Ausgabe hinzuzufügen,entspricht jedoch nicht der Logik vom Budgetplaner*
+
 
 ### Dateneingabe
 Es sind für die Eingabe der Ausgaben und für die Festlegung der Budget-Kategorien 
@@ -57,12 +60,30 @@ nach dem Erfassen in der jeweiligen Registerkarte als Tabelle angezeigt
 Zusätzlich fliessen diese Daten in die insgesamt 4 Diagramme ein (3 Plotly Diagramme und 1 HTML-Diagramm). 
 Nachfolgend als Beispiel die Tabelle der Ausgaben.
 ![Budget](Budget/doku/tabelle_ausgabe.jpg)
-
+***
 ## Benutzeranleitung
-Der Nutzer hat die Möglichkeit, eine neue Budget-Kategorie hinzuzufügen oder zu löschen, 
-sowie eine Ausgabe hinzuzufügen oder zu löschen. 
-Ausserdem kann er im Dashboard die Ausgaben je Monat anzeigen lassen. 
-Wie das genau funktioniert, wird nachfolgend beschrieben.
+### Übersicht über die Ausgaben verschaffen
+Auf der Startseite befindet sich das Dashboard. Hier kann man sich einen Überblick über alle 
+getätigten Ausgaben machen. 
+Durch Auswahl des gewünschten Monats (es stehen alle Monate zur Auswahl, in denen eine Ausgabe getätigt wurde)
+kann die Ansicht verändert werden. Standardmässig wird der aktuelle Monat angezeigt.
+Folgende Funktionalitäten stehen zur Verfügung:
+
+![Workflow](Budget/doku/dashboard_uebersicht.jpg)
+
+1. Dropdown-Menü zur Auswahl der Monate (es werden nur diejenigen angezeigt, wo auch Daten vorhanden sind)
+2. Gesamtausgaben in Relation zum Gesamtbudget (pro Monat)
+3. Gesamtausgaben pro Budget-Kategorie pro Monat
+4. Die Gesamtausgaben (über den gesamten Zeitraum) pro Budget-Kategorie 
+5. Hier kann man ein neues Budget erfassen
+6. Hier kann man eine neue Ausgabe erfassen
+7. Menüband, wo man die Registerkarten `/ausgaben/`, Dashboard, `/budget/` anwählen kann.
+8. Hier wird der aktuelle Monat angezeigt
+
+Das Kreisdiagramm `Gesamtübersicht` zeigt, wie viel Prozent die einzelnen Kategorien an den 
+Gesamtausgaben ausmachen (diese Ansicht ändert sich nicht mit dem Wechsel des Monats).
+Da es sich um ein plotly express Diagramm handelt, können durch hovern Zusatzinformationen im 
+Diagramm abgefragt werden. Auch kann das Diagramm nach den Budget-Kategorie gefiltert werden.
 
 ### Budget hinzufügen
 Wenn man nach der Installation das erste Mal das Tool startet (Startseite), sind noch keine Daten 
@@ -72,12 +93,18 @@ die Ausgabe standardmässig zu der Kategorie "Andere" hinzugefügt) oder zuerst 
 Budget-Kategorien hinzufügen.
 Dazu wählt man im rechten Bildschirmbereich das Symbol `Budget hinzufügen` aus. Es öffnet sich ein 
 Eingabeformular, in dem man die Bezeichnung und den Betrag angeben kann. Nach dem Speichern wird 
-man direkt auf die Seite `Budget` weitergeleitet, wo man die Tabelle aller bisher hinzugefügten 
+man direkt auf die Seite `/budget/` weitergeleitet, wo man die Tabelle aller bisher hinzugefügten 
 Budgets sieht (inkl. der Standard-Kategorie "Andere"). Ausserdem sieht man ein Diagramm, 
 in dem die Grösse der einzelnen Budgets im Vergleich grafisch dargestellt sind.
+Da es sich um ein plotly express Diagramm handelt, können durch hovern Zusatzinformationen im 
+Diagramm abgefragt werden. Auch kann das Diagramm nach den Budget-Kategorie gefiltert werden.
 
-Zu beachten: Ein Budget kann bearbeitet werden, in dem ein neues Budget mit dem gleichen Namen wie das
+Man beachte: Ein Budget kann bearbeitet werden, in dem ein neues Budget mit dem gleichen Namen wie das
 zu bearbeitende Budget angelegt wird. So wird das bestehende Budget mit dem neuen Betrag überschrieben.
+
+*Eingabefeld Budget hinzufügen:*
+![Budget](Budget/doku/budget_hinzu.jpg)
+*Übersicht der eingetragenen Budget-Kategorien (Tabelle inkl. Diagramm):*
 ![Budget](Budget/doku/budget.jpg)
 
 ### Ausgabe hinzufügen
@@ -86,32 +113,24 @@ erfasst werden. Es öffnet sich ein Eingabeformular, in dem man den Betrag, die 
 Budget-Kategorie, das Datum sowie die Bezeichnung angeben kann.
 Das Datum muss manuell ausgewählt werden (anstelle bspw. Timestamp), damit Ausgaben auch rück- 
 oder vordatiert werden können.
-Nach dem Speichern wird man direkt auf die Seite `Ausgaben` weitergeleitet, auf der man analog 
-zur Seite `Budget` die Tabelle aller bisher hinzugefügten Ausgaben sieht. Auch auf dieser Seite
-gibt es ein Diagramm, auf dem man die Ausgaben grafisch dargestellt sieht.
+Nach dem Speichern wird man direkt auf die Seite `/ausgaben/` weitergeleitet, auf der man analog 
+zur Seite `/budget/` die Tabelle aller bisher hinzugefügten Ausgaben sieht. Die Tabelle ist nach eingegebenem Datum sortiert.
+Auch auf dieser Seite gibt es ein Diagramm, auf dem man die Ausgaben grafisch dargestellt sieht.
+Da es sich um ein plotly express Diagramm handelt, können durch hovern Zusatzinformationen im 
+Diagramm abgefragt werden. Auch kann das Diagramm nach den Budget-Kategorie gefiltert werden.
 
-Die Tabelle ist nach eingegebenem Datum sortiert.
+*Eingabefeld Ausgabe hinzufügen:*
+![Budget](Budget/doku/ausgabe_hinzu.jpg)
+*Übersicht der erfassten Ausgaben (Tabelle inkl. Diagramm):*
 ![ausgabe](Budget/doku/ausgaben.jpg)
 
-### Übersicht über die Ausgaben verschaffen
-Auf der Startseite befindet sich das Dashboard. Hier kann man sich einen Überblick über alle 
-getätigten Ausgaben machen. 
-Durch Auswahl des gewünschten Monats (es stehen alle Monate zur Auswahl, in denen eine Ausgabe getätigt wurde)
-kann die Ansicht verändert werden. Standardmässig wird der aktuelle Monat angezeigt. 
-
-Somit kann man im Diagramm `Budgetübersicht` pro Monat einsehen, wie viel man bereits pro 
-Budget-Kategorie ausgegeben hat.
-
-Das Kreisdiagramm `Gesamtübersicht` zeigt, wie viel Prozent die einzelnen Kategorien an den 
-Gesamtausgaben ausmachen (diese Ansicht ändert sich nicht mit dem Wechsel des Monats).
-Da es sich um ein plotly express Diagramm handelt, können durch hovern Zusatzinformationen im 
-Diagramm abgefragt werden. Auch kann das Diagramm gefiltert werden.
-![dashboard](Budget/doku/dashboard.jpg)
-
 ### Ausgabe oder Budget löschen
-Hat man eine Ausgabe oder eine Budget-Kategorie falsch erfasst, oder möchte die 
-Kategorie löschen, hat man die Möglichkeit, über das Löschen Symbol (Abfalleimer) den 
+Hat man eine Ausgabe oder eine Budget-Kategorie falsch erfasst, oder möchte es einfach 
+löschen, hat man die Möglichkeit, über das Löschen-Symbol (Abfalleimer) den 
 jeweiligen Eintrag zu entfernen.
 Dazu navigiert man auf die jeweilige Registerkarte `/ausgaben/` oder `/budget/` unten im 
 Menü und klickt dann beim zu löschenden Eintrag auf den Abfalleimer.
 Die Budget-Kategorie "Andere" kann nicht gelöscht werden, da diese als Fallback-Kategorie festgelegt ist.
+
+*Bestätigung der Löschung:*
+![ausgabe](Budget/doku/ausgabe_loeschen.jpg)

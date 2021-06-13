@@ -324,7 +324,7 @@ def standardbudget():
 """
 Diese Funktion prüft, ob die "ausgabe.json" Datei keine Daten beinhaltet. Falls ja, wird die Datei gelöscht. 
 Wenn alle Ausgaben gelöscht werden, beinhaltet die json-Datei weiterhin die Klammern "{}" des dict. 
-Das führt zu Anzeigeproblemen. Deshalb wird die Datei gelöscht, sollte sie nur noch diese Klammern behinhalten 
+Das führt zu Anzeigeproblemen. Deshalb wird die Datei gelöscht, sollte sie nur noch diese Klammern beinhalten 
 (Falls nur noch zwei Zeichen in der Datei vorhanden sind).
 """
 def json_pruefer():

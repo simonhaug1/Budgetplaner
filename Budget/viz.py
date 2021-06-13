@@ -3,6 +3,9 @@ import json
 from plotly.offline import plot
 import pandas as pd
 
+"""
+Dies generiert mir ein plotly express "Pie-Chart", welches ich für die Anzeige der Gesamtausgabe als Kuchendiagram auf dem Dashboard verwende
+"""
 def pie_chart_ausgaben():
     try:
         with open('ausgabe.json') as open_file:
@@ -24,7 +27,9 @@ def pie_chart_ausgaben():
     except FileNotFoundError:
         pass
 
-
+"""
+Dies generiert mir ein plotly express "Barchart", welches ich für die Anzeige der Ausgaben als Balkendiagram im Register "/ausgaben/" verwende
+"""
 def barchart_ausgaben():
     try:
         with open('ausgabe.json') as open_file:
@@ -47,6 +52,9 @@ def barchart_ausgaben():
     except FileNotFoundError:
         pass
 
+"""
+Dies generiert mir ein plotly express "Barchart", welches ich für die Anzeige der Budgets als Balkendiagramm im Register "/budget/" verwende
+"""
 def barchart_budget():
     try:
         with open('budget.json') as open_file:
@@ -63,8 +71,6 @@ def barchart_budget():
 
         dict = {'Kategorie': Kategorie, 'Betrag': Betrag}
         df = pd.DataFrame(dict)
-
-        print(df)
 
         df.Betrag = df.Betrag.astype("float")
 
